@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tetyana-ukrainian-tutor.github.io/sitemap.xml

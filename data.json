@@ -1,0 +1,285 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "short": "ukr_30",
+      "title": {
+        "en": "Ukrainian from Scratch in 30 Days",
+        "ua": "Українська з нуля за 30 днів",
+        "ru": "Украинский с нуля за 30 дней"
+      },
+      "description": {
+        "en": "Guaranteed start in 1 month",
+        "ua": "Гарантований старт за 1 місяць",
+        "ru": "Гарантированный старт за 1 месяц"
+      },
+      "details": {
+        "en": "<b>For whom:</b> complete beginner<br><b>Format:</b> 12-15 lessons + homework + checklists<br><b>Inside:</b><ul><li>Alphabet + reading</li><li>Basic grammar</li><li>300-500 words</li><li>Mini dialogues</li></ul><b>Result:</b> you start speaking freely with simple phrases",
+        "ua": "<b>Для кого:</b> повний нуль<br><b>Формат:</b> 12–15 занять + домашка + чек-листи<br><b>Всередині:</b><ul><li>Алфавіт + читання</li><li>Базова граматика</li><li>300–500 слів</li><li>Міні-діалоги</li></ul><b>Результат:</b> починаєте вільно говорити простими фразами",
+        "ru": "<b>Для кого:</b> полный ноль<br><b>Формат:</b> 12–15 занятий + домашка + чек-листы<br><b>Внутри:</b><ul><li>Алфавит + чтение</li><li>Базовая грамматика</li><li>300–500 слов</li><li>Мини-диалоги</li></ul><b>Результат:</b> начинаете свободно говорить простыми фразами"
+      },
+      "price": 1800,
+      "price_type": "course",
+      "tags": ["courses"],
+      "rating": 9.1,
+      "detailed": true,
+      "show": true,
+      "image": "ukr_30-00.jpeg",
+      "icon": "ukr_30-88.svg"
+    },
+    {
+      "id": 2,
+      "short": "ukr_for_live",
+      "title": {
+        "en": "Conversational Ukrainian for Life",
+        "ua": "Розмовна українська для життя",
+        "ru": "Разговорный украинский для жизни"
+      },
+      "description": {
+        "en": "Top product",
+        "ua": "Топ продукт",
+        "ru": "Топ продукт"
+      },
+      "details": {
+        "en": "<b>For whom:</b> understands but doesn't speak<br><b>Format:</b> 10-12 lessons<br><b>Inside:</b><ul><li>Live dialogues (shop, doctor, work)</li><li>Role plays</li><li>Eliminating language barrier</li></ul><b>Result:</b> You finally start speaking confidently",
+        "ua": "<b>Для кого:</b> розуміє, але не говорить<br><b>Формат:</b> 10–12 занять<br><b>Всередині:</b><ul><li>Живі діалоги (магазин, лікарня, робота)</li><li>Рольові ігри</li><li>Усунення мовного бар'єру</li></ul><b>Результат:</b> Ви нарешті починаєте впевнено говорити",
+        "ru": "<b>Для кого:</b> понимает, но не говорит<br><b>Формат:</b> 10–12 занятий<br><b>Внутри:</b><ul><li>Живые диалоги (магазин, врач, работа)</li><li>Ролевые игры</li><li>Устранение языкового барьера</li></ul><b>Результат:</b> Вы наконец начинаете уверенно говорить"
+      },
+      "price": 1500,
+      "price_type": "course",
+      "tags": ["courses"],
+      "rating": 9.4,
+      "detailed": true,
+      "show": true,
+      "image": "ukr_for_live-00.jpeg",
+      "icon": "ukr_for_live-88.svg"
+    },
+    {
+      "id": 3,
+      "short": "busines",
+      "title": {
+        "en": "Ukrainian for Work",
+        "ua": "Українська для роботи",
+        "ru": "Украинский для работы"
+      },
+      "description": {
+        "en": "Language is my friend",
+        "ua": "Мова мій друг",
+        "ru": "Язык мой друг"
+      },
+      "details": {
+        "en": "<b>For whom:</b> office, government, business<br><b>Format:</b> 8-10 lessons<br><b>Inside:</b><ul><li>Business vocabulary</li><li>Letters, documents</li><li>Work conversations</li></ul><b>Result:</b> You sound professional",
+        "ua": "<b>Для кого:</b> офіс, держслужба, бізнес<br><b>Формат:</b> 8–10 занять<br><b>Всередині:</b><ul><li>Ділова лексика</li><li>Листи, документи</li><li>Розмови на роботі</li></ul><b>Результат:</b> Ви звучите професійно",
+        "ru": "<b>Для кого:</b> офис, госслужба, бизнес<br><b>Формат:</b> 8–10 занятий<br><b>Внутри:</b><ul><li>Деловая лексика</li><li>Письма, документы</li><li>Разговоры на работе</li></ul><b>Результат:</b> Вы звучите профессионально"
+      },
+      "price": 4500,
+      "price_type": "course",
+      "tags": ["services"],
+      "rating": 9.2,
+      "detailed": true,
+      "show": true,
+      "image": "busines-00.jpeg",
+      "icon": "busines-88.svg"
+    },
+    {
+      "id": 4,
+      "short": "exam",
+      "title": {
+        "en": "Exam/Test Preparation",
+        "ua": "Підготовка до іспиту / тесту",
+        "ru": "Подготовка к экзамену / тесту"
+      },
+      "description": {
+        "en": "You can do everything",
+        "ua": "Ти можеш все",
+        "ru": "Ты можешь всё"
+      },
+      "details": {
+        "en": "<b>For whom:</b> schoolchildren / adults / government employees<br><b>Format:</b> 15-20 lessons<br><b>Inside:</b><ul><li>Task analysis</li><li>Test practice</li><li>Exam strategies</li></ul><b>Result:</b> score increase",
+        "ua": "<b>Для кого:</b> школярі / дорослі / держслужбовці<br><b>Формат:</b> 15–20 занять<br><b>Всередині:</b><ul><li>Розбір завдань</li><li>Практика тестів</li><li>Стратегії здачі</li></ul><b>Результат:</b> підвищення балу",
+        "ru": "<b>Для кого:</b> школьники / взрослые / гос. служащие<br><b>Формат:</b> 15–20 занятий<br><b>Внутри:</b><ul><li>Разбор заданий</li><li>Практика тестов</li><li>Стратегии сдачи</li></ul><b>Результат:</b> повышение балла"
+      },
+      "price": 2700,
+      "price_type": "course",
+      "tags": ["services"],
+      "rating": 9.0,
+      "detailed": true,
+      "show": true,
+      "image": "exam-00.jpeg",
+      "icon": "exam-88.svg"
+    },
+    {
+      "id": 5,
+      "short": "child",
+      "title": {
+        "en": "Ukrainian for Kids (Game Course)",
+        "ua": "Українська для дітей (ігровий курс)",
+        "ru": "Украинский для детей (игровой курс)"
+      },
+      "description": {
+        "en": "Funner than ordinary lessons",
+        "ua": "Веселіше, ніж звичайні уроки",
+        "ru": "Веселей, чем обычные уроки"
+      },
+      "details": {
+        "en": "<b>For whom:</b> children 6-12 years<br><b>Format:</b> 8-12 lessons<br><b>Inside:</b><ul><li>Games</li><li>Cards</li><li>Mini tasks</li></ul><b>Result:</b> child learns language without stress",
+        "ua": "<b>Для кого:</b> діти 6–12 років<br><b>Формат:</b> 8–12 занять<br><b>Всередині:</b><ul><li>Ігри</li><li>Картки</li><li>Міні-завдання</li></ul><b>Результат:</b> дитина вчить мову без стресу",
+        "ru": "<b>Для кого:</b> дети 6–12 лет<br><b>Формат:</b> 8–12 занятий<br><b>Внутри:</b><ul><li>Игры</li><li>Карточки</li><li>Мини-задания</li></ul><b>Результат:</b> ребёнок учит язык без стресса"
+      },
+      "price": 1800,
+      "price_type": "course",
+      "tags": ["courses"],
+      "rating": 9.1,
+      "detailed": true,
+      "show": true,
+      "image": "child-00.jpeg",
+      "icon": "child-88.svg"
+    },
+    {
+      "id": 6,
+      "short": "intensiv_14",
+      "title": {
+        "en": "Ukrainianization of Life in 14 Days",
+        "ua": "Українізація життя за 14 днів",
+        "ru": "Украинизация жизни за 14 дней"
+      },
+      "description": {
+        "en": "Funner than ordinary lessons",
+        "ua": "Веселіше, ніж звичайні уроки",
+        "ru": "Веселей, чем обычные уроки"
+      },
+      "details": {
+        "en": "<b>For whom:</b> wants to switch to Ukrainian quickly<br><b>Format:</b> intensive<br><b>Inside:</b><ul><li>Translating life to Ukrainian (phone, thoughts, everyday)</li><li>Daily tasks</li><li>Control</li></ul><b>Result:</b> person starts thinking in the language",
+        "ua": "<b>Для кого:</b> хоче швидко перейти на українську<br><b>Формат:</b> інтенсив<br><b>Всередині:</b><ul><li>Переклад життя на українську (телефон, думки, побут)</li><li>Щоденні завдання</li><li>Контроль</li></ul><b>Результат:</b> людина починає думати на мові",
+        "ru": "<b>Для кого:</b> хочет быстро перейти на украинский<br><b>Формат:</b> интенсив<br><b>Внутри:</b><ul><li>Перевод жизни на украинский (телефон, мысли, быт)</li><li>Ежедневные задания</li><li>Контроль</li></ul><b>Результат:</b> человек начинает думать на языке"
+      },
+      "price": 950,
+      "price_type": "course",
+      "tags": ["courses"],
+      "rating": 8.7,
+      "detailed": true,
+      "show": true,
+      "image": "intensiv_14-00.jpeg",
+      "icon": "intensiv_14-88.svg"
+    },
+    {
+      "id": 7,
+      "short": "no_error",
+      "title": {
+        "en": "Error-Free: Grammar in 10 Lessons",
+        "ua": "Без помилок: граматика за 10 занять",
+        "ru": "Без ошибок: грамматика за 10 занятий"
+      },
+      "description": {
+        "en": "Writing in 10 days",
+        "ua": "Письмо за 10 днів",
+        "ru": "Письмо за 10 дней"
+      },
+      "details": {
+        "en": "<b>For whom:</b> already speaks but with errors<br><b>Inside:</b><ul><li>Common mistakes</li><li>Speech analysis</li><li>Personal corrections</li></ul><b>Result:</b> clean, correct speech",
+        "ua": "<b>Для кого:</b> вже говорить, але з помилками<br><b>Всередині:</b><ul><li>Часті помилки</li><li>Розбір мови учня</li><li>Персональні правки</li></ul><b>Результат:</b> чиста, грамотна мова",
+        "ru": "<b>Для кого:</b> уже говорит, но с ошибками<br><b>Внутри:</b><ul><li>Частые ошибки</li><li>Разбор речи ученика</li><li>Персональные правки</li></ul><b>Результат:</b> чистая, грамотная речь"
+      },
+      "price": 1800,
+      "price_type": "course",
+      "tags": ["services"],
+      "rating": 9.1,
+      "detailed": true,
+      "show": true,
+      "image": "no_error-00.jpeg",
+      "icon": "no_error-88.svg"
+    },
+    {
+      "id": 8,
+      "short": "mentor",
+      "title": {
+        "en": "VIP Support (Mentoring)",
+        "ua": "VIP супровід (менторство)",
+        "ru": "VIP сопровождение (менторство)"
+      },
+      "description": {
+        "en": "We will handle everything together",
+        "ua": "Разом справимось з усім",
+        "ru": "Вместе справимся со всем"
+      },
+      "details": {
+        "en": "<b>For whom:</b> busy people<br><b>Inside:</b><ul><li>Lessons + 24/7 chat</li><li>Message checking</li><li>Voice corrections</li></ul><b>Result:</b> fast progress",
+        "ua": "<b>Для кого:</b> зайняті люди<br><b>Всередині:</b><ul><li>Уроки + чат 24/7</li><li>Перевірка повідомлень</li><li>Голосові правки</li></ul><b>Результат:</b> швидкий прогрес",
+        "ru": "<b>Для кого:</b> занятые люди<br><b>Внутри:</b><ul><li>Уроки + чат 24/7</li><li>Проверка сообщений</li><li>Голосовые правки</li></ul><b>Результат:</b> быстрый прогресс"
+      },
+      "price": 4500,
+      "price_type": "course",
+      "tags": ["services"],
+      "rating": 9.0,
+      "detailed": true,
+      "show": true,
+      "image": "mentor-00.jpeg",
+      "icon": "mentor-88.svg"
+    }
+  ],
+  "sections": [
+    {
+      "id": 1,
+      "short": "courses",
+      "title": {
+        "en": "Courses",
+        "ua": "Курси",
+        "ru": "Курсы"
+      },
+      "description": {
+        "en": "Learn Ukrainian with our courses",
+        "ua": "Вивчай українську на наших курсах",
+        "ru": "Изучай украинский на наших курсах"
+      },
+      "tags": ["courses"],
+      "section_type": "courses",
+      "template": "cards",
+      "show": true,
+      "hero": true,
+      "order": 1,
+      "image": "courses-00.jpg",
+      "icon": "courses-88.svg"
+    },
+    {
+      "id": 2,
+      "short": "services",
+      "title": {
+        "en": "Services",
+        "ua": "Послуги",
+        "ru": "Услуги"
+      },
+      "description": {
+        "en": "Professional tutoring services",
+        "ua": "Професійні послуги репетитора",
+        "ru": "Профессиональные услуги репетитора"
+      },
+      "tags": ["services"],
+      "section_type": "services",
+      "template": "cards",
+      "show": true,
+      "hero": false,
+      "order": 2,
+      "image": "services-00.jpg",
+      "icon": "services-88.svg"
+    }
+  ],
+  "tags": [
+    { "id": 1, "name": "courses", "description": "Курсы" },
+    { "id": 2, "name": "services", "description": "Услуги" }
+  ],
+  "contacts": {
+    "phone": "+38 (050) 123-45-67",
+    "email": "tetyana@example.com",
+    "footer_desc": {
+      "en": "Ukrainian language and literature tutor",
+      "ua": "Репетитор з української мови та літератури",
+      "ru": "Репетитор по украинскому языку и литературе"
+    },
+    "social": {
+      "youtube": "",
+      "instagram": "",
+      "facebook": "",
+      "tiktok": ""
+    }
+  }
+}

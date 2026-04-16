@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Татьяна - репетитор з української мови та літератури">
+    <meta name="keywords" content="репетитор, українська мова, підготовка до ЗНО, НМТ">
+    <title>Татьяна - Репетитор з української мови</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #0057B8; --primary-dark: #004494; --secondary: #FF6B35; --text: #333; --text-light: #666; --bg: #fff; --bg-gray: #f5f5f5; --border: #ddd; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        a { text-decoration: none; color: inherit; }
+        button { cursor: pointer; font-family: inherit; }
+        input, textarea, select { font-family: inherit; font-size: 14px; }
+        
+        /* Header */
+        .header { background: var(--bg); box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        .header-inner { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+        .logo { display: flex; align-items: center; gap: 8px; }
+        .logo-icon { width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 20px; }
+        .logo-text { font-size: 24px; font-weight: 700; color: var(--primary); }
+        .nav { display: flex; align-items: center; gap: 20px; }
+        .nav-link { font-weight: 500; padding: 8px 0; border-bottom: 2px solid transparent; transition: all 0.3s; }
+        .nav-link:hover, .nav-link.active { color: var(--primary); border-bottom-color: var(--primary); }
+        .btn { padding: 10px 20px; border-radius: 8px; font-weight: 500; border: none; transition: all 0.3s; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-dark); }
+        .btn-outline { background: transparent; border: 1px solid var(--border); }
+        .btn-outline:hover { background: var(--primary); color: #FFD700; font-weight: bold; }
+        .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; }
+        .burger span { width: 25px; height: 3px; background: var(--text); border-radius: 2px; }
+        
+        /* Hero */
+        .hero { position: relative; height: 500px; overflow: hidden; background: linear-gradient(135deg, var(--primary) 0%, #003d7a 100%); }
+        .hero-slider { height: 100%; }
+        .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s; display: flex; align-items: center; }
+        .hero-slide.active { opacity: 1; }
+        .hero-slide-content { color: white; text-align: center; width: 100%; padding: 0 20px; }
+        .hero-slide-title { font-size: 48px; font-weight: 700; margin-bottom: 16px; }
+        .hero-slide-desc { font-size: 20px; margin-bottom: 24px; opacity: 0.9; }
+        .hero-slider-nav { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; }
+        .hero-dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; border: none; }
+        .hero-dot.active { background: white; }
+        
+        /* Sections */
+        .section { padding: 80px 0; }
+        .section-gray { background: var(--bg-gray); }
+        .section-title { font-size: 36px; font-weight: 700; text-align: center; margin-bottom: 40px; color: var(--primary); }
+        .section-subtitle { font-size: 18px; color: var(--text-light); text-align: center; margin-top: -30px; margin-bottom: 40px; }
+        
+        /* Card Templates */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        
+        /* Template 1: List Left (image left, text right) */
+        .tpl-list-left { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .tpl-list-left .item-image { border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .tpl-list-left .item-image img { width: 100%; height: 100%; object-fit: cover; max-width: 100%; max-height: 100%; }
+        .tpl-list-left .item-image svg { font-size: 80px; }
+        .tpl-list-left .item-content h3 { font-size: 24px; margin-bottom: 12px; }
+        .tpl-list-left .item-content p { color: var(--text-light); margin-bottom: 16px; }
+        .tpl-list-left .item-content .price { font-size: 28px; font-weight: 700; color: var(--primary); margin-bottom: 16px; }
+        
+        /* Template 2: List Right (image right, text left) */
+        .tpl-list-right { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .tpl-list-right .item-image { order: 2; border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .tpl-list-right .item-image img { width: 100%; height: 100%; object-fit: cover; max-width: 100%; max-height: 100%; }
+        .tpl-list-right .item-content { order: 1; }
+        .tpl-list-right .item-content h3 { font-size: 24px; margin-bottom: 12px; }
+        .tpl-list-right .item-content p { color: var(--text-light); margin-bottom: 16px; }
+        .tpl-list-right .item-content .price { font-size: 28px; font-weight: 700; color: var(--primary); margin-bottom: 16px; }
+        
+        /* Template 3: List Alternate */
+        .tpl-list-alt .item-row:nth-child(even) { flex-direction: row-reverse; }
+        
+        /* Template 4: Cards Grid */
+        .tpl-cards .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .tpl-cards .card:hover { transform: translateY(-5px); }
+        .tpl-cards .card-img { aspect-ratio: 16/9; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; color: white; font-size: 48px; overflow: hidden; }
+        .tpl-cards .card-img img { width: 100%; height: 100%; object-fit: cover; }
+        .tpl-cards .card-body { padding: 20px; }
+        .tpl-cards .card-title { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+        .tpl-cards .card-desc { color: var(--text-light); margin-bottom: 16px; }
+        .tpl-cards .card-price { font-size: 24px; font-weight: 700; color: var(--primary); }
+        
+        /* Template 5: Carousel (for reviews) */
+        .tpl-carousel { position: relative; }
+        .tpl-carousel .carousel-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; }
+        .tpl-carousel .carousel-track::-webkit-scrollbar { display: none; }
+        .tpl-carousel .carousel-slide { flex: 0 0 100%; scroll-snap-align: start; padding: 0 10px; }
+        .tpl-carousel .review-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); text-align: center; }
+        .tpl-carousel .review-text { font-size: 18px; font-style: italic; margin-bottom: 20px; }
+        .tpl-carousel .review-author { font-weight: 600; color: var(--primary); }
+        .tpl-carousel-nav { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+        
+        /* About section */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .about-img { width: 100%; height: 400px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 120px; }
+        .stats { display: flex; gap: 40px; margin-top: 24px; }
+        .stat { text-align: center; }
+        .stat-num { font-size: 36px; font-weight: 700; color: var(--primary); }
+        .stat-label { color: var(--text-light); }
+        
+        /* Footer */
+        .footer { background: #1a1a2e; color: white; padding: 60px 0 20px; }
+        .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-title { font-size: 18px; font-weight: 600; margin-bottom: 20px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { opacity: 0.8; transition: opacity 0.3s; }
+        .footer-links a:hover { opacity: 1; }
+        .social-links { display: flex; gap: 16px; }
+        .social-link { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s; }
+        .social-link:hover { background: var(--primary); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; opacity: 0.6; font-size: 14px; }
+        
+        /* Modal */
+        .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 1000; }
+        .modal.active { display: flex; }
+        .modal-content { background: white; border-radius: 12px; padding: 30px; max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative; }
+        .modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-light); }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: 500; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; }
+        .form-group textarea { min-height: 100px; resize: vertical; }
+        
+        /* Admin */
+        .admin-panel { display: none; min-height: 100vh; background: var(--bg-gray); }
+        .admin-panel.active { display: block; }
+        .admin-header { background: var(--primary); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .admin-logo { color: white; font-size: 20px; font-weight: bold; }
+        .admin-nav { display: flex; gap: 10px; flex-wrap: wrap; }
+        .admin-nav button { background: rgba(255,255,255,0.2); color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
+        .admin-nav button.active { background: white; color: var(--primary); }
+        .admin-content { padding: 20px; max-width: 1600px; margin: 0 auto; }
+        .admin-section { display: none; }
+        .admin-section.active { display: block; }
+        .admin-grid { display: grid; grid-template-columns: 300px 1fr; gap: 20px; }
+        .admin-sidebar { background: white; border-radius: 8px; padding: 15px; max-height: 70vh; overflow-y: auto; }
+        .admin-list-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; gap: 10px; }
+        .admin-list-header select { padding: 8px; border: 1px solid var(--border); border-radius: 5px; flex: 1; }
+        .admin-list-header .count { font-size: 12px; color: var(--text-light); }
+        .admin-list-item { padding: 12px; border: 1px solid #eee; border-radius: 5px; margin-bottom: 8px; cursor: pointer; transition: all 0.2s; }
+        .admin-list-item:hover { border-color: var(--primary); }
+        .admin-list-item.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .admin-list-item-title { font-weight: 600; font-size: 14px; }
+        .admin-list-item-meta { font-size: 12px; opacity: 0.7; margin-top: 4px; }
+        .admin-editor { background: white; border-radius: 8px; padding: 20px; }
+        .admin-editor-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; flex-wrap: wrap; gap: 10px; }
+        .admin-editor-header h3 { color: var(--primary); }
+        .admin-editor-actions { display: flex; gap: 10px; }
+        .admin-form .form-group { margin-bottom: 14px; }
+        .admin-form label { display: block; font-weight: 500; margin-bottom: 6px; font-size: 13px; color: var(--text-light); }
+        .admin-form input, .admin-form textarea, .admin-form select { width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px; }
+        .admin-form textarea { min-height: 80px; }
+        .admin-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .admin-form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; }
+        .admin-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+        .admin-tag { background: var(--primary); color: white; padding: 4px 10px; border-radius: 15px; font-size: 12px; display: flex; align-items: center; gap: 6px; }
+        .admin-tag-remove { cursor: pointer; opacity: 0.7; }
+        .admin-tag-remove:hover { opacity: 1; }
+        .checkbox-group { display: flex; align-items: center; gap: 8px; margin: 10px 0; }
+        .checkbox-group input { width: auto; }
+        .image-preview { width: 100%; height: 150px; background: var(--bg-gray); border: 2px dashed var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; overflow: hidden; }
+        .image-preview img { width: 100%; height: 100%; object-fit: cover; }
+        .image-preview:hover { border-color: var(--primary); }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .tpl-list-left, .tpl-list-right { grid-template-columns: 1fr; }
+            .tpl-list-right .item-image { order: 1; }
+            .tpl-list-right .item-content { order: 2; }
+            .admin-grid { grid-template-columns: 1fr; }
+            .admin-form-row, .admin-form-row-3 { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav { display: none; position: absolute; top: 70px; left: 0; right: 0; background: white; flex-direction: column; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+            .nav.active { display: flex; }
+            .burger { display: flex; }
+            .hero-slide-title { font-size: 28px; }
+            .hero-slide-desc { font-size: 16px; }
+            .about-grid { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="#home" class="logo">
+                <span class="logo-icon">Т</span>
+                <span class="logo-text">Татьяна</span>
+            </a>
+            <nav class="nav" id="nav"></nav>
+            <div class="header-right" style="display:flex;gap:15px;align-items:center;">
+                <select id="lang-select" onchange="setLanguage(this.value)">
+                    <option value="ua">UA</option>
+                    <option value="en">EN</option>
+                    <option value="ru">RU</option>
+                </select>
+                <button class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="app">
+        <!-- Hero -->
+        <section class="hero" id="home">
+            <div class="hero-slider" id="hero-slider"></div>
+            <div class="hero-slider-nav" id="hero-nav"></div>
+        </section>
+        <div id="sections-container"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div>
+                <a href="#home" class="logo" style="margin-bottom:20px;">
+                    <span class="logo-icon">Т</span>
+                    <span class="logo-text">Татьяна</span>
+                </a>
+                <p style="opacity:0.8;" id="footer-desc"></p>
+            </div>
+            <div>
+                <h4 class="footer-title" data-i18n="footer.products">Послуги</h4>
+                <ul class="footer-links" id="footer-services"></ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Соцмережі</h4>
+                <div class="social-links" id="social-links"></div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2024 Татьяна. Всі права захищені. | <a href="#" onclick="openAdmin();return false" style="opacity:0.5;">Admin</a></p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3 id="modal-title" style="margin-bottom:20px;">Записатися на заняття</h3>
+            <form onsubmit="submitForm(event)">
+                <div class="form-group"><label id="modal-name-label">Ім'я</label><input type="text" name="name" required></div>
+                <div class="form-group"><label id="modal-phone-label">Телефон</label><input type="tel" name="phone" required placeholder="+38 (___) ___-__-__" oninput="formatPhone(this)"></div>
+                <div class="form-group"><label id="modal-msg-label">Повідомлення</label><textarea name="message"></textarea></div>
+                <div class="form-group" id="captcha-group">
+                    <label id="modal-captcha-label">Скільки буде 2 + 2?</label>
+                    <input type="number" name="captcha" required placeholder="?">
+                </div>
+                <button type="submit" id="modal-submit-btn" class="btn btn-primary" style="width:100%;">Надіслати</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="admin-login-modal">
+        <div class="modal-content" style="max-width:400px;">
+            <button class="modal-close" onclick="closeAdminLogin()">&times;</button>
+            <h3 style="margin-bottom:20px;">Вхід в адмін-панель</h3>
+            <form onsubmit="adminLogin(event)">
+                <div class="form-group"><label>Логін</label><input type="text" id="admin-login" required></div>
+                <div class="form-group"><label>Пароль</label><input type="password" id="admin-password" required></div>
+                <button type="submit" class="btn btn-primary" style="width:100%;">Вхід</button>
+            </form>
+            <p style="margin-top:16px;font-size:12px;color:#666;">Тест: admin / admin123</p>
+        </div>
+    </div>
+
+    <div class="modal" id="detail-modal">
+        <div class="modal-content" style="max-width:900px;">
+            <button class="modal-close" onclick="closeDetailModal()">&times;</button>
+            <div id="detail-content"></div>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="admin-panel">
+        <div class="admin-header">
+            <div class="admin-logo">Адмін-панель</div>
+            <div class="admin-nav">
+                <button class="active" onclick="showAdminSection('items')">Товари</button>
+                <button onclick="showAdminSection('sections')">Розділи</button>
+                <button onclick="showAdminSection('tags')">Тегі</button>
+                <button onclick="showAdminSection('contacts')">Контакти</button>
+                <button onclick="closeAdmin()" style="border:1px solid white;margin-left:20px;">X</button>
+            </div>
+        </div>
+        
+        <div class="admin-content">
+            <!-- Items (Products) -->
+            <div class="admin-section active" id="admin-items">
+                <div class="admin-grid">
+                    <div class="admin-sidebar">
+                        <div class="admin-list-header">
+                            <select id="admin-item-lang" onchange="switchAdminLang('items', this.value)">
+                                <option value="ua">UA</option>
+                                <option value="en">EN</option>
+                                <option value="ru">RU</option>
+                            </select>
+                            <button class="btn btn-primary" onclick="createNewItem()">+</button>
+                        </div>
+                        <div class="admin-list-items" id="items-list"></div>
+                    </div>
+                    <div class="admin-editor">
+                        <div class="admin-editor-header">
+                            <h3>Редагування товару</h3>
+                            <div class="admin-editor-actions">
+                                <button class="btn btn-primary" onclick="saveItem()">💾 Зберегти</button>
+                                <button class="btn btn-outline" onclick="deleteItem()">🗑️ Видалити</button>
+                            </div>
+                        </div>
+                        <form class="admin-form" id="item-form">
+                            <div class="form-group">
+                                <label>Нік ( Short Name )</label>
+                                <input type="text" name="short" placeholder="ukr_30" style="font-family:monospace;">
+                            </div>
+                            <div class="form-group">
+                                <label>Заголовок <span style="font-weight:400;font-size:11px;color:#999;">(EN | UA | RU)</span></label>
+                                <input type="text" name="title_en" placeholder="English title *">
+                                <input type="text" name="title_ua" placeholder="Українська назва" style="margin-top:5px;">
+                                <input type="text" name="title_ru" placeholder="Русское название" style="margin-top:5px;">
+                            </div>
+                            <div class="form-group">
+                                <label>Короткий опис <span style="font-weight:400;font-size:11px;color:#999;">(EN | UA | RU)</span></label>
+                                <textarea name="desc_en" placeholder="Short description"></textarea>
+                                <textarea name="desc_ua" placeholder="Короткий опис" style="margin-top:5px;"></textarea>
+                                <textarea name="desc_ru" placeholder="Краткое описание" style="margin-top:5px;"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Детальний опис (HTML) <span style="font-weight:400;font-size:11px;color:#999;">(EN | UA | RU)</span></label>
+                                <textarea name="details_en" placeholder="<b>For whom:</b> complete beginner<br><b>Format:</b> 12-15 lessons + homework<br><b>Inside:</b> Alphabet + Reading, Basic Grammar, 300-500 words, Mini-dialogs<br><b>Result:</b> start speaking freely" style="min-height:120px"></textarea>
+                                <textarea name="details_ua" placeholder="<b>Для кого:</b> повний нуль<br><b>Формат:</b> 12–15 занять + домашка<br><b>Всередині:</b> Алфавіт + читання, Базова граматика, 300–500 слів, Міні-діалоги<br><b>Результат:</b> починаєте вільно говорити" style="margin-top:5px;min-height:120px"></textarea>
+                                <textarea name="details_ru" placeholder="<b>Для кого:</b> полный ноль<br><b>Формат:</b> 12–15 занятий + домашка<br><b>Внутри:</b> Алфавит + чтение, Базовая грамматика, 300–500 слов, Мини-диалоги<br><b>Результат:</b> начинаете свободно говорить" style="margin-top:5px;min-height:120px"></textarea>
+                            </div>
+                            <div class="admin-form-row">
+                                <div class="form-group">
+                                    <label>Ціна (грн)</label>
+                                    <input type="number" name="price">
+                                </div>
+                                <div class="form-group">
+                                    <label>Тип ціни</label>
+                                    <select name="price_type">
+                                        <option value="course">за курс</option>
+                                        <option value="hour">за годину</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Рейтинг <span id="rating-value" style="color:var(--primary);font-weight:600;">4.5</span></label>
+                                    <input type="range" name="rating" min="1" max="10" step="0.5" value="4.5" style="width:100%;cursor:pointer;" oninput="document.getElementById('rating-value').textContent = parseFloat(this.value).toFixed(1)">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Основне фото</label>
+                                <div class="image-preview" onclick="document.getElementById('image-input').click()" id="image-preview">
+                                    <span style="color:#999;">Натисніть для вибору зображення</span>
+                                </div>
+                                <input type="file" id="image-input" accept="image/*" style="display:none" onchange="handleImageUpload(event)">
+                                <input type="text" name="image" id="image-path" style="margin-top:8px" placeholder="assets/items/photo.jpg">
+                            </div>
+                            <div class="form-group">
+                                <label>Іконка (emoji або SVG)</label>
+                                <input type="text" name="icon" placeholder="📚">
+                            </div>
+                            <div class="form-group">
+                                <label>Теги</label>
+                                <div class="admin-tags" id="item-tags"></div>
+                                <div style="display:flex;gap:8px;margin-top:8px;">
+                                    <select id="tag-selector" onchange="addSelectedTag(this.value);this.value=''">
+                                        <option value="">Виберіть тег...</option>
+                                    </select>
+                                    <input type="text" id="new-item-tag" placeholder="Або введіть свій + Enter" style="flex:1">
+                                </div>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" name="detailed" id="detailed-check">
+                                <label for="detailed-check">Відкривати деталі у вікні</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" name="show" id="show-check" checked>
+                                <label for="show-check">Показувати на сайті</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tags -->
+            <div class="admin-section" id="admin-tags">
+                <div class="admin-editor" style="max-width:600px;margin:0 auto;">
+                    <div class="admin-editor-header">
+                        <h3>Тегі</h3>
+                        <div class="admin-editor-actions">
+                            <button class="btn btn-primary" onclick="saveTags()">💾 Зберегти</button>
+                        </div>
+                    </div>
+                    <div class="admin-list-header">
+                        <button class="btn btn-primary" onclick="addNewTag()">+ Додати тег</button>
+                    </div>
+                    <div class="admin-list-items" id="tags-list"></div>
+                </div>
+            </div>
+
+            <!-- Sections -->
+            <div class="admin-section" id="admin-sections">
+                <div class="admin-grid">
+                    <div class="admin-sidebar">
+                        <div class="admin-list-header">
+                            <span class="count" id="sections-count"></span>
+                            <button class="btn btn-primary" onclick="createNewSection()">+</button>
+                        </div>
+                        <div class="admin-list-items" id="sections-list"></div>
+                    </div>
+                    <div class="admin-editor">
+                        <div class="admin-editor-header">
+                            <h3>Редагування розділу</h3>
+                            <div class="admin-editor-actions">
+                                <button class="btn btn-primary" id="save-section-btn" onclick="saveSection()">💾 Зберегти</button>
+                                <button class="btn btn-outline" id="delete-section-btn" onclick="deleteSection()">🗑️ Видалити</button>
+                            </div>
+                        </div>
+                        <form class="admin-form" id="section-form">
+                            <div class="form-group">
+                                <label>Нік (Short Name)</label>
+                                <input type="text" name="short" placeholder="courses" style="font-family:monospace;">
+                            </div>
+                            <div class="form-group">
+                                <label>Назва розділу <span style="font-weight:400;font-size:11px;color:#999;">(EN | UA | RU)</span></label>
+                                <input type="text" name="title_en" placeholder="English title *">
+                                <input type="text" name="title_ua" placeholder="Українська назва" style="margin-top:5px;">
+                                <input type="text" name="title_ru" placeholder="Русское название" style="margin-top:5px;">
+                            </div>
+                            <div class="form-group">
+                                <label>Опис розділу <span style="font-weight:400;font-size:11px;color:#999;">(EN | UA | RU)</span></label>
+                                <textarea name="description_en" placeholder="Section description"></textarea>
+                                <textarea name="description_ua" placeholder="Опис розділу" style="margin-top:5px;"></textarea>
+                                <textarea name="description_ru" placeholder="Описание раздела" style="margin-top:5px;"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Теги товарів для цього розділу</label>
+                                <input type="text" name="tags" placeholder="#Послуга, #Курс">
+                            </div>
+                            <div class="form-group">
+                                <label>Тип розділу</label>
+                                <select name="section_type">
+                                    <option value="services">Послуги</option>
+                                    <option value="courses">Курси</option>
+                                    <option value="about">Про мене</option>
+                                    <option value="reviews">Відгуки</option>
+                                    <option value="contacts">Контакти</option>
+                                    <option value="menu">Меню (верхнє)</option>
+                                    <option value="custom">Інший</option>
+                                </select>
+                            </div>
+                            <div class="admin-form-row">
+                                <div class="form-group">
+                                    <label>Шаблон відображення</label>
+                                    <select name="template">
+                                        <option value="list-left">Список зліва</option>
+                                        <option value="list-right">Список справа</option>
+                                        <option value="list-alt">Список чергуванням</option>
+                                        <option value="cards">Плашки (картки)</option>
+                                        <option value="carousel">Карусель</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Порядок</label>
+                                    <input type="number" name="order" value="0">
+                                </div>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" name="show" id="section-show" checked>
+                                <label for="section-show">Показувати на сайті</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" name="hero" id="section-hero">
+                                <label for="section-hero">Показувати в Hero (карусель)</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contacts -->
+            <div class="admin-section" id="admin-contacts">
+                <div class="admin-editor" style="max-width:600px;margin:0 auto;">
+                    <div class="admin-editor-header">
+                        <h3>Контакти</h3>
+                        <div class="admin-editor-actions">
+                            <button class="btn btn-primary" onclick="saveContacts()">💾 Зберегти</button>
+                        </div>
+                    </div>
+                    <form class="admin-form" id="contacts-form">
+                        <div class="form-group"><label>Телефон</label><input type="text" name="phone"></div>
+                        <div class="form-group"><label>Email</label><input type="email" name="email"></div>
+                        <div class="form-group"><label>Опис (футер)</label><textarea name="footer_desc"></textarea></div>
+                        <hr style="margin:20px 0;border:none;border-top:1px solid #eee;">
+                        <h4 style="margin-bottom:15px;">Соцмережі</h4>
+                        <div class="form-group"><label>YouTube</label><input type="url" name="youtube"></div>
+                        <div class="form-group"><label>Instagram</label><input type="url" name="instagram"></div>
+                        <div class="form-group"><label>Facebook</label><input type="url" name="facebook"></div>
+                        <div class="form-group"><label>TikTok</label><input type="url" name="tiktok"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== DEFAULT DATA ====================
+        const defaultData = {
+            items: [
+                { id: 1, title: { ua: 'Індивідуальні заняття', en: 'Individual Lessons', ru: 'Индивидуальные занятия' }, description: { ua: 'Персональний підхід до кожного учня', en: 'Personalized approach', ru: 'Персональный подход' }, details: { ua: '<p>Індивідуальні заняття з української мови та літератури.</p><p>Тривалість — 60 хвилин.</p>', en: '<p>Individual Ukrainian language lessons.</p><p>Duration — 60 minutes.</p>', ru: '<p>Индивидуальные занятия по украинскому языку.</p><p>Продолжительность — 60 минут.</p>' }, price: 400, tags: ['#Послуга'], rating: 4.9, detailed: true, show: true, image: '', icon: '📚' },
+                { id: 2, title: { ua: 'Підготовка до ЗНО/НМТ', en: 'ZNO/NMT Preparation', ru: 'Подготовка к ЗНО/НМТ' }, description: { ua: 'Комплексна підготовка до іспиту', en: 'Comprehensive exam preparation', ru: 'Комплексная подготовка к экзамену' }, details: { ua: '<p>Повний курс підготовки до ЗНО/НМТ.</p>', en: '<p>Full ZNO/NMT preparation course.</p>', ru: '<p>Полный курс подготовки к ЗНО/НМТ.</p>' }, price: 500, tags: ['#Курс'], rating: 4.8, detailed: true, show: true, image: '', icon: '🎓' },
+                { id: 3, title: { ua: 'Сертифікація', en: 'Certification', ru: 'Сертификация' }, description: { ua: 'Підготовка до сертифікату', en: 'Certification preparation', ru: 'Подготовка к сертификату' }, details: { ua: '<p>Підготовка до сертифікації.</p>', en: '<p>Certification preparation.</p>', ru: '<p>Подготовка к сертификации.</p>' }, price: 600, tags: ['#Послуга'], rating: 4.7, detailed: true, show: true, image: '', icon: '📜' },
+                { id: 4, title: { ua: 'Переклад текстів', en: 'Text Translation', ru: 'Перевод текстов' }, description: { ua: 'Професійний переклад', en: 'Professional translation', ru: 'Профессиональный перевод' }, details: { ua: '<p>Переклад текстів.</p>', en: '<p>Text translation.</p>', ru: '<p>Перевод текстов.</p>' }, price: 50, tags: ['#Послуга'], rating: 4.9, detailed: true, show: true, image: '', icon: '✍️' },
+                { id: 5, title: { ua: 'Олена К.', en: 'Olena K.', ru: 'Елена К.' }, description: { ua: 'Чудовий репетитор!', en: 'Great tutor!', ru: 'Отличный репетитор!' }, details: { ua: '<p>Чудовий репетитор! Допомогла підготуватись до ЗНО на 195 балів.</p>', en: '<p>Great tutor! Helped me prepare for ZNO with 195 points.</p>', ru: '<p>Отличный репетитор! Помогла подготовиться к ЗНО на 195 баллов.</p>' }, price: 0, tags: ['#Відгук'], rating: 5, detailed: false, show: true, image: '', icon: '⭐' },
+                { id: 6, title: { ua: 'Максим С.', en: 'Maxim S.', ru: 'Максим С.' }, description: { ua: 'Рекомендую!', en: 'Recommend!', ru: 'Рекомендую!' }, details: { ua: '<p>Здав сертифікацію з першого разу. Дякую!</p>', en: '<p>Passed certification on the first try. Thank you!</p>', ru: '<p>Сдал сертификацию с первого раза. Спасибо!</p>' }, price: 0, tags: ['#Відгук'], rating: 5, detailed: false, show: true, image: '', icon: '⭐' }
+            ],
+            sections: [
+                { id: 1, title: { ua: 'Послуги', en: 'Services', ru: 'Услуги' }, description: { ua: 'Професійні послуги репетитора', en: 'Professional tutor services', ru: 'Профессиональные услуги репетитора' }, tags: ['#Послуга'], section_type: 'services', template: 'cards', show: true, hero: true, order: 1 },
+                { id: 2, title: { ua: 'Курси', en: 'Courses', ru: 'Курсы' }, description: { ua: 'Навчальні курси', en: 'Training courses', ru: 'Учебные курсы' }, tags: ['#Курс'], section_type: 'courses', template: 'cards', show: true, hero: false, order: 2 },
+                { id: 3, title: { ua: 'Про мене', en: 'About Me', ru: 'Обо мне' }, description: { ua: 'Досвід та кваліфікація', en: 'Experience and qualifications', ru: 'Опыт и квалификация' }, tags: [], section_type: 'about', template: 'list-left', show: true, hero: false, order: 3 },
+                { id: 4, title: { ua: 'Відгуки', en: 'Reviews', ru: 'Отзывы' }, description: { ua: 'Відгуки учнів', en: 'Student reviews', ru: 'Отзывы учеников' }, tags: ['#Відгук'], section_type: 'reviews', template: 'carousel', show: true, hero: false, order: 4 },
+                { id: 5, title: { ua: 'Контакти', en: 'Contacts', ru: 'Контакты' }, description: { ua: 'Зв\'яжіться зі мною', en: 'Contact me', ru: 'Свяжитесь со мной' }, tags: [], section_type: 'contacts', template: 'cards', show: true, hero: false, order: 5 }
+            ],
+            contacts: {
+                phone: '+38 (050) 123-45-67',
+                email: 'tetyana@example.com',
+                footer_desc: { ua: 'Репетитор з української мови та літератури', en: 'Ukrainian language and literature tutor', ru: 'Репетитор по украинскому языку и литературе' },
+                social: { youtube: '', instagram: '', facebook: '', tiktok: '' }
+            }
+        };
+
+        // ==================== STATE ====================
+        let cmsData = {};
+        let currentLang = localStorage.getItem('lang') || 'ua';
+        let adminLang = localStorage.getItem('adminLang') || 'ua';
+        let currentSlide = 0;
+        let currentItemId = null;
+        let currentSectionId = null;
+        let currentItemTags = [];
+
+        // ==================== INIT ====================
+        async function init() {
+            // Сначала проверяем localStorage (данные из админки)
+            const savedData = localStorage.getItem('cmsData');
+            if (savedData) {
+                try {
+                    cmsData = JSON.parse(savedData);
+                    console.log('Загружено из localStorage');
+                } catch(e) {
+                    console.log('Ошибка чтения localStorage, используем данные по умолчанию');
+                    cmsData = getHardcodedData();
+                }
+            } else {
+                // Нет данных в localStorage - пробуем загрузить из data.json
+                try {
+                    const response = await fetch('data.json');
+                    if (response.ok) {
+                        cmsData = await response.json();
+                        console.log('Загружено из data.json');
+                    } else {
+                        throw new Error('data.json not found');
+                    }
+                } catch (e) {
+                    console.log('data.json не загружен, используем встроенные данные...');
+                    cmsData = getHardcodedData();
+                }
+            }
+            
+            setLanguage(currentLang);
+            startCarousel();
+            renderContent();
+            renderFooter();
+            initAdminLangTabs();
+        }
+        
+        // Fallback данные для локального тестирования (продублировано из data.json)
+        function getHardcodedData() {
+            return {
+                "items": [
+                    {"id":1,"short":"ukr_30","title":{"en":"Ukrainian from Scratch in 30 Days","ua":"Українська з нуля за 30 днів","ru":"Украинский с нуля за 30 дней"},"description":{"en":"Guaranteed start in 1 month","ua":"Гарантований старт за 1 місяць","ru":"Гарантированный старт за 1 месяц"},"details":{"en":"<b>For whom:</b> complete beginner<br><b>Format:</b> 12-15 lessons + homework<br><b>Inside:</b> Alphabet + Reading, Basic Grammar, 300-500 words, Mini-dialogs<br><b>Result:</b> start speaking freely","ua":"<b>Для кого:</b> повний нуль<br><b>Формат:</b> 12–15 занять + домашка<br><b>Всередині:</b> Алфавіт + читання, Базова граматика, 300–500 слів, Міні-діалоги<br><b>Результат:</b> починаєте вільно говорити","ru":"<b>Для кого:</b> полный ноль<br><b>Формат:</b> 12–15 занятий + домашка<br><b>Внутри:</b> Алфавит + чтение, Базовая грамматика, 300–500 слов, Мини-диалоги<br><b>Результат:</b> начинаете свободно говорить"},"price":1800,"price_type":"course","tags":["courses"],"rating":9.1,"detailed":true,"show":true,"image":"ukr_30-00.jpeg","icon":"ukr_30-88.svg"},
+                    {"id":2,"short":"ukr_for_live","title":{"en":"Conversational Ukrainian for Life","ua":"Розмовна українська для життя","ru":"Разговорный украинский для жизни"},"description":{"en":"Top product","ua":"Топ продукт","ru":"Топ продукт"},"details":{"en":"<b>For whom:</b> understands but doesn't speak<br><b>Format:</b> 10-12 lessons<br><b>Inside:</b> Real-life situations, Practical vocabulary, Dialogues practice, Speaking drills<br><b>Result:</b> speak confidently","ua":"<b>Для кого:</b> розуміє, але не говорить<br><b>Формат:</b> 10–12 занять<br><b>Всередині:</b> Реальні ситуації, Практична лексика, Відпрацювання діалогів, Розмовні практики<br><b>Результат:</b> впевнено говорите","ru":"<b>Для кого:</b> понимает, но не говорит<br><b>Формат:</b> 10–12 занятий<br><b>Внутри:</b> Реальные ситуации, Практическая лексика, Отработка диалогов, Разговорные практики<br><b>Результат:</b> уверенно говорите"},"price":1500,"price_type":"course","tags":["courses"],"rating":9.4,"detailed":true,"show":true,"image":"ukr_for_live-00.jpeg","icon":"ukr_for_live-88.svg"},
+                    {"id":3,"short":"busines","title":{"en":"Ukrainian for Work","ua":"Українська для роботи","ru":"Украинский для работы"},"description":{"en":"Language is my friend","ua":"Мова мій друг","ru":"Язык мой друг"},"details":{"en":"<b>For whom:</b> office, government, business<br><b>Format:</b> 8-10 lessons<br><b>Inside:</b> Business vocabulary, Formal letters, Presentations, Meeting language, Phone calls<br><b>Result:</b> sound professional","ua":"<b>Для кого:</b> офіс, держслужба, бізнес<br><b>Формат:</b> 8–10 занять<br><b>Всередині:</b> Бізнес-лексіка, Офіційні листи, Презентації, Мова нараджень, Телефонні дзвінки<br><b>Результат:</b> звучите професійно","ru":"<b>Для кого:</b> офис, госслужба, бизнес<br><b>Формат:</b> 8–10 занятий<br><b>Внутри:</b> Бизнес-лексика, Официальные письма, Презентации, Язык совещаний, Телефонные звонки<br><b>Результат:</b> звучите профессионально"},"price":4500,"price_type":"course","tags":["services"],"rating":9.2,"detailed":true,"show":true,"image":"busines-00.jpeg","icon":"busines-88.svg"},
+                    {"id":4,"short":"exam","title":{"en":"Exam/Test Preparation","ua":"Підготовка до іспиту / тесту","ru":"Подготовка к экзамену / тесту"},"description":{"en":"You can do everything","ua":"Ти можеш все","ru":"Ты можешь всё"},"details":{"en":"<b>For whom:</b> schoolchildren, adults<br><b>Format:</b> 15-20 lessons<br><b>Inside:</b> Test format, Key topics, Grammar drills, Essay writing, Time management<br><b>Result:</b> score increase","ua":"<b>Для кого:</b> школярі, дорослі<br><b>Формат:</b> 15–20 занять<br><b>Всередині:</b> Формат тесту, Ключові теми, Граматичні вправи, Написання есе, Управління часом<br><b>Результат:</b> підвищення балу","ru":"<b>Для кого:</b> школьники, взрослые<br><b>Формат:</b> 15–20 занятий<br><b>Внутри:</b> Формат теста, Ключевые темы, Грамматические упражнения, Написание эссе, Управление временем<br><b>Результат:</b> повышение балла"},"price":2700,"price_type":"course","tags":["services"],"rating":9.0,"detailed":true,"show":true,"image":"exam-00.jpeg","icon":"exam-88.svg"},
+                    {"id":5,"short":"child","title":{"en":"Ukrainian for Kids","ua":"Українська для дітей","ru":"Украинский для детей"},"description":{"en":"Funner than ordinary lessons","ua":"Веселіше ніж звичайні уроки","ru":"Веселей чем обычные уроки"},"details":{"en":"<b>For whom:</b> children 6-12 years<br><b>Format:</b> 8-12 lessons<br><b>Inside:</b> Fairy tales, Songs, Games, Flashcards, Art projects<br><b>Result:</b> learn without stress","ua":"<b>Для кого:</b> діти 6–12 років<br><b>Формат:</b> 8–12 занять<br><b>Всередині:</b> Казки, Пісні, Ігри, Флешкартки, Творчі проекти<br><b>Результат:</b> вчить мову без стресу","ru":"<b>Для кого:</b> дети 6–12 лет<br><b>Формат:</b> 8–12 занятий<br><b>Внутри:</b> Сказки, Песни, Игры, Флешкарточки, Творческие проекты<br><b>Результат:</b> учит язык без стресса"},"price":1800,"price_type":"course","tags":["courses"],"rating":9.1,"detailed":true,"show":true,"image":"child-00.jpeg","icon":"child-88.svg"},
+                    {"id":6,"short":"intensiv_14","title":{"en":"Ukrainianization in 14 Days","ua":"Українізація життя за 14 днів","ru":"Украинизация жизни за 14 дней"},"description":{"en":"Fast switch to Ukrainian","ua":"Швидкий перехід на українську","ru":"Быстрый переход на украинский"},"details":{"en":"<b>For whom:</b> wants to switch quickly<br><b>Format:</b> intensive (2 weeks)<br><b>Inside:</b> Daily practice, Immersion technique, Speaking marathons, Vocabulary boost<br><b>Result:</b> think in language","ua":"<b>Для кого:</b> хоче швидко перейти<br><b>Формат:</b> інтенсив (2 тижні)<br><b>Всередині:</b> Щоденна практика, Техніка імерсії, Розмовні марафони, Словниковий запас<br><b>Результат:</b> думає на мові","ru":"<b>Для кого:</b> хочет быстро перейти<br><b>Формат:</b> интенсив (2 недели)<br><b>Внутри:</b> Ежедневная практика, Техника иммерсии, Разговорные марафоны, Словарный запас<br><b>Результат:</b> думает на языке"},"price":950,"price_type":"course","tags":["courses"],"rating":8.7,"detailed":true,"show":true,"image":"intensiv_14-00.jpeg","icon":"intensiv_14-88.svg"},
+                    {"id":7,"short":"no_error","title":{"en":"Error-Free Grammar","ua":"Без помилок граматика","ru":"Без ошибок грамматика"},"description":{"en":"Writing in 10 days","ua":"Письмо за 10 днів","ru":"Письмо за 10 дней"},"details":{"en":"<b>For whom:</b> speaks with errors<br><b>Format:</b> 10 lessons<br><b>Inside:</b> Common mistakes, Rule drilling, Correction exercises, Text analysis, Fast rewriting<br><b>Result:</b> clean speech","ua":"<b>Для кого:</b> говорить з помилками<br><b>Формат:</b> 10 занять<br><b>Всередині:</b> Поширені помилки, Відпрацювання правил, Корекційні вправи, Аналіз текстів, Швидке переписування<br><b>Результат:</b> чиста мова","ru":"<b>Для кого:</b> говорит с ошибками<br><b>Формат:</b> 10 занятий<br><b>Внутри:</b> Распространенные ошибки, Отработка правил, Коррекционные упражнения, Анализ текстов, Быстрое переписывание<br><b>Результат:</b> чистая речь"},"price":1800,"price_type":"course","tags":["services"],"rating":9.1,"detailed":true,"show":true,"image":"no_error-00.jpeg","icon":"no_error-88.svg"},
+                    {"id":8,"short":"mentor","title":{"en":"VIP Mentoring","ua":"VIP супровід","ru":"VIP сопровождение"},"description":{"en":"We handle everything together","ua":"Разом справимось з усім","ru":"Вместе справимся со всем"},"details":{"en":"<b>For whom:</b> busy people<br><b>Format:</b> 1 month<br><b>Inside:</b> Personal lessons, 24/7 chat support, Weekly checks, Custom materials, Fast feedback<br><b>Result:</b> fast progress","ua":"<b>Для кого:</b> зайняті люди<br><b>Формат:</b> 1 місяць<br><b>Всередині:</b> Особисті уроки, Чат 24/7, Тижневі перевірки, Індивідуальні матеріали, Швидкий зворотній зв'язок<br><b>Результат:</b> швидкий прогрес","ru":"<b>Для кого:</b> занятые люди<br><b>Формат:</b> 1 месяц<br><b>Внутри:</b> Личные уроки, Чат 24/7, Еженедельные проверки, Индивидуальные материалы, Быстрая обратная связь<br><b>Результат:</b> быстрый прогресс"},"price":4500,"price_type":"course","tags":["services"],"rating":9.0,"detailed":true,"show":true,"image":"mentor-00.jpeg","icon":"mentor-88.svg"},
+                    {"id":9,"short":"review1","title":{"en":"Олександр - SunMail Group, CEO","ua":"Олександр - SunMail Group, CEO","ru":"Александр - SunMail Group, CEO"},"description":{"en":"Дякую Тетяні за професійний підхід! За 2 місяці навчився вільно спілкуватися українською. Рекомендую всім підприємцям!","ua":"Дякую Тетяні за професійний підхід! За 2 місяці навчився вільно спілкуватися українською. Рекомендую всім підприємцям!","ru":"Спасибо Татьяне за профессиональный подход! За 2 месяца научился свободно общаться на украинском. Рекомендую всем предпринимателям!"},"details":{"en":"","ua":"","ru":""},"price":0,"price_type":"course","tags":["reviews"],"rating":10.0,"detailed":true,"show":true,"image":"","icon":"⭐⭐⭐⭐⭐"},
+                    {"id":10,"short":"review2","title":{"en":"Марія - Freelance Designer","ua":"Марія - Freelance Designer","ru":"Мария - Freelance Designer"},"description":{"en":"Тетяна дуже терпляча і уважна до кожного учня. Завжди пояснює незрозумілі речі по-різному, поки не зрозумієш.","ua":"Тетяна дуже терпляча і уважна до кожного учня. Завжди пояснює незрозумілі речі по-різному, поки не зрозумієш.","ru":"Татьяна очень терпеливая и внимательная к каждому ученику. Всегда объясняет непонятные вещи по-разному, пока не поймёшь."},"details":{"en":"","ua":"","ru":""},"price":0,"price_type":"course","tags":["reviews"],"rating":8.0,"detailed":true,"show":true,"image":"","icon":"⭐⭐⭐⭐☆"},
+                    {"id":11,"short":"review3","title":{"en":"Іван - IT Developer","ua":"Іван - IT Developer","ru":"Иван - IT Developer"},"description":{"en":"Відмінний курс для вивчення української з нуля! Матеріал структурований, домашні завдання допомагають закріпити знання. За 3 місяці склав НМТ на 190 балів!","ua":"Відмінний курс для вивчення української з нуля! Матеріал структурований, домашні завдання допомагають закріпити знання. За 3 місяці склав НМТ на 190 балів!","ru":"Отличный курс для изучения украинского с нуля! Материал структурирован, домашние задания помогают закрепить знания. За 3 месяца сдал НМТ на 190 баллов!"},"details":{"en":"","ua":"","ru":""},"price":0,"price_type":"course","tags":["reviews"],"rating":9.0,"detailed":true,"show":true,"image":"","icon":"⭐⭐⭐⭐⭐"},
+                    {"id":12,"short":"review4","title":{"en":"Анна - Marketing Manager","ua":"Анна - Marketing Manager","ru":"Анна - Marketing Manager"},"description":{"en":"Записувала чоловіка на курс для роботи в українських компаніях. Результат перевершив очікування - він тепер спілкується українською навіть вдома!","ua":"Записувала чоловіка на курс для роботи в українських компаніях. Результат перевершив очікування - він тепер спілкується українською навіть вдома!","ru":"Записывала мужа на курс для работы в украинских компаниях. Результат превзошёл ожидания - он теперь общается на украинском даже дома!"},"details":{"en":"","ua":"","ru":""},"price":0,"price_type":"course","tags":["reviews"],"rating":7.0,"detailed":true,"show":true,"image":"","icon":"⭐⭐⭐☆☆"},
+                    {"id":13,"short":"review5","title":{"en":"Петро - Пенсіонер","ua":"Петро - Пенсіонер","ru":"Пётр - Пенсионер"},"description":{"en":"Навчив онуку української мови за 6 місяців. Тепер він допомагає мені з документами і я можу спілкуватися з лікарями самостійно. Дякую!","ua":"Навчив онуку української мови за 6 місяців. Тепер він допомагає мені з документами і я можу спілкуватися з лікарями самостійно. Дякую!","ru":"Научил внука украинскому за 6 месяцев. Теперь он помогает мне с документами и я могу общаться с врачами самостоятельно. Спасибо!"},"details":{"en":"","ua":"","ru":""},"price":0,"price_type":"course","tags":["reviews"],"rating":8.0,"detailed":true,"show":true,"image":"","icon":"⭐⭐⭐⭐☆"}
+                ],
+                "sections": [
+                    {"id":1,"short":"courses","title":{"en":"Courses","ua":"Курси","ru":"Курсы"},"description":{"en":"Learn Ukrainian with our courses","ua":"Вивчай українську на наших курсах","ru":"Изучай украинский на наших курсах"},"tags":["courses"],"section_type":"courses","template":"cards","show":true,"hero":true,"order":1,"image":"courses-00.jpg","icon":"courses-88.svg"},
+                    {"id":2,"short":"services","title":{"en":"Services","ua":"Послуги","ru":"Услуги"},"description":{"en":"Professional tutoring services","ua":"Професійні послуги репетитора","ru":"Профессиональные услуги репетитора"},"tags":["services"],"section_type":"services","template":"cards","show":true,"hero":false,"order":2,"image":"services-00.jpg","icon":"services-88.svg"},
+                    {"id":3,"short":"reviews","title":{"en":"Reviews","ua":"Відгуки","ru":"Отзывы"},"description":{"en":"What our students say about us","ua":"Що говорять наші студенти про нас","ru":"Что говорят наши студенты о нас"},"tags":["reviews"],"section_type":"reviews","template":"carousel","show":true,"hero":false,"order":3,"image":"","icon":"reviews-88.svg"}
+                ],
+                "tags": [
+                    {"id":1,"name":"courses","description":"Курсы"},
+                    {"id":2,"name":"services","description":"Услуги"},
+                    {"id":3,"name":"reviews","description":"Отзывы"}
+                ],
+                "contacts": {"phone":"+38 (050) 123-45-67","email":"tetyana@example.com","footer_desc":{"en":"Ukrainian language tutor","ua":"Репетитор української мови","ru":"Репетитор украинского языка"},"social":{"youtube":"","instagram":"","facebook":"","tiktok":""}}
+            };
+        }
+
+        // ==================== LANGUAGE ====================
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            document.getElementById('lang-select').value = lang;
+            renderContent();
+            renderFooter();
+        }
+
+        // ==================== NAV ====================
+        function renderNav() {
+            // Get sections with section_type = 'menu' for navigation
+            const menuSections = cmsData.sections
+                .filter(s => s.show && (s.section_type === 'services' || s.section_type === 'courses' || s.section_type === 'about' || s.section_type === 'contacts'))
+                .sort((a, b) => a.order - b.order);
+            
+            const nav = document.getElementById('nav');
+            const t = getTranslations();
+            nav.innerHTML = `
+                <a href="#home" class="nav-link">${t.nav.home}</a>
+                ${menuSections.map(s => `<a href="#section-${s.id}" class="nav-link">${s.title[currentLang] || s.title.ua}</a>`).join('')}
+                <button class="btn btn-primary" onclick="openModal('contact')">${t.nav.cta}</button>
+            `;
+        }
+
+        // ==================== RENDER ====================
+        function renderContent() {
+            const t = getTranslations();
+            renderNav();
+            renderHero(t);
+            renderSections(t);
+        }
+
+        function renderHero(t) {
+            const heroSlider = document.getElementById('hero-slider');
+            const heroNav = document.getElementById('hero-nav');
+            
+            // Hero shows items from sections marked as hero
+            const heroSections = cmsData.sections.filter(s => s.show && s.hero);
+            const heroItems = heroSections.flatMap(s => 
+                cmsData.items.filter(i => i.show && i.tags?.some(tag => s.tags?.includes(tag))))
+            .slice(0, 5);
+            
+            if (heroItems.length === 0) {
+                // Fallback to first 3 items
+                heroItems = cmsData.items.filter(i => i.show).slice(0, 3);
+            }
+            
+            heroSlider.innerHTML = heroItems.map((item, i) => {
+                const priceLabel = item.price_type === 'hour' ? 'грн' : 'грн';
+                const priceTypeText = item.price_type === 'hour' ? ' / година' : ' / курс';
+                const priceNum = item.price.toLocaleString('uk-UA');
+                return `
+                <div class="hero-slide ${i === 0 ? 'active' : ''}">
+                    <div class="container hero-slide-content">
+                        <h1 class="hero-slide-title">${item.title?.[currentLang] || item.title?.en || ''}</h1>
+                        <p class="hero-slide-desc">${item.description?.[currentLang] || item.description?.en || ''}</p>
+                        ${item.price > 0 ? `<p style="font-size:18px;font-weight:600;">${priceNum} ${priceLabel}<span style="font-weight:400;">${priceTypeText}</span></p>` : ''}
+                        <button class="btn btn-primary" onclick="openModal('contact')">${t.nav.cta}</button>
+                    </div>
+                </div>
+            `}).join('');
+            
+            heroNav.innerHTML = heroItems.map((_, i) => 
+                `<button class="hero-dot ${i === 0 ? 'active' : ''}" onclick="goToSlide(${i})"></button>`
+            ).join('');
+        }
+
+        function renderSections(t) {
+            const container = document.getElementById('sections-container');
+            const sortedSections = [...cmsData.sections].filter(s => s.show).sort((a, b) => a.order - b.order);
+            
+            let html = '';
+            
+            sortedSections.forEach(section => {
+                const sectionTitle = section.title[currentLang] || section.title.ua;
+                const sectionDesc = section.description[currentLang] || section.description.ua;
+                
+                if (section.section_type === 'about') {
+                    html += renderAboutSection(sectionTitle, sectionDesc);
+                } else if (section.section_type === 'contacts') {
+                    html += renderContactsSection(sectionTitle);
+                } else if (section.section_type === 'reviews') {
+                    const reviews = cmsData.items.filter(i => i.show && i.tags.some(tag => section.tags.includes(tag)));
+                    html += renderReviewsSection(sectionTitle, reviews);
+                } else {
+                    // Regular sections: services, courses, custom
+                    const items = cmsData.items
+                        .filter(i => i.show && i.tags.some(tag => section.tags.includes(tag)))
+                        .sort((a, b) => b.rating - a.rating);
+                    
+                    if (items.length > 0) {
+                        html += renderSection(sectionTitle, sectionDesc, items, section.template);
+                    }
+                }
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function renderSection(title, desc, items, template) {
+            const isAlt = template === 'list-alt';
+            let tplClass = 'tpl-list-left';
+            if (template === 'list-right') tplClass = 'tpl-list-right';
+            if (template === 'cards') tplClass = 'tpl-cards';
+            
+            let html = `<section class="section" id="section-${items[0]?.id || 'main'}">
+                <div class="container">
+                    <h2 class="section-title">${title}</h2>
+                    ${desc ? `<p class="section-subtitle">${desc}</p>` : ''}`;
+            
+            if (template === 'carousel') {
+                html += `<div class="tpl-carousel">
+                    <div class="carousel-track">
+                        ${items.map(item => `
+                            <div class="carousel-slide">
+                                <div class="review-card">
+                                    <p class="review-text">"${item.description[currentLang]}"</p>
+                                    <p class="review-author">— ${item.title?.[currentLang] || item.title?.en || ''}</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>`;
+            } else if (template === 'cards') {
+                html += `<div class="grid">
+                    ${items.map(item => renderCard(item)).join('')}
+                </div>`;
+            } else {
+                html += `<div class="${tplClass} ${isAlt ? 'tpl-list-alt' : ''}">
+                    ${items.map(item => renderListItem(item, template)).join('')}
+                </div>`;
+            }
+            
+            html += `</div></section>`;
+            return html;
+        }
+
+        // Получить URL картинки
+        function getImageUrl(imagePath, short) {
+            if (!imagePath && !short) return '';
+            
+            // Если imagePath уже содержит short (напр. "ukr_30-00.jpeg"), используем как есть
+            if (imagePath && imagePath.includes('-')) {
+                return 'assets/' + imagePath;
+            }
+            
+            // Если есть short, формируем путь assets/short-00.jpeg
+            if (short) {
+                const suffix = imagePath || '00.jpeg';
+                return 'assets/' + short + '-' + suffix;
+            }
+            
+            if (imagePath.startsWith('data:')) return imagePath;
+            
+            const imageData = JSON.parse(localStorage.getItem('imageData') || '{}');
+            if (imageData[imagePath]) return imageData[imagePath];
+            
+            return imagePath;
+        }
+        
+        // Получить URL иконки
+        function getIconUrl(iconPath, short) {
+            if (short && iconPath) {
+                const filename = short + '-88.svg';
+                return 'assets/' + filename;
+            }
+            if (!iconPath) return '';
+            return iconPath;
+        }
+        
+        function renderListItem(item, template) {
+            const isAlt = template === 'list-alt';
+            const imageSrc = getImageUrl(item.image, item.short);
+            
+            const title = item.title?.[currentLang] || item.title?.en || item.title?.ua || item.title?.ru || '';
+            const desc = item.description?.[currentLang] || item.description?.en || item.description?.ua || item.description?.ru || '';
+            
+            const imageHtml = imageSrc 
+                ? `<img src="${imageSrc}" alt="${title}" style="width:100%;height:100%;object-fit:cover;">` 
+                : `<svg style="font-size:80px;">${item.icon || '📚'}</svg>`;
+            
+            const priceLabel = item.price_type === 'hour' ? 'грн' : 'грн';
+            const priceTypeText = item.price_type === 'hour' ? ' / година' : ' / курс';
+            const priceNum = item.price.toLocaleString('uk-UA');
+            
+            return `
+                <div class="item-row" style="display:flex;flex-direction:${isAlt ? 'row' : 'row'};gap:40px;align-items:center;margin-bottom:60px;">
+                    <div class="item-image" style="flex:1;border-radius:12px;overflow:hidden;aspect-ratio:4/3;background:linear-gradient(135deg, var(--primary), var(--secondary));display:flex;align-items:center;justify-content:center;color:white;">
+                        ${imageHtml}
+                    </div>
+                    <div class="item-content" style="flex:1;">
+                        <h3 style="font-size:24px;margin-bottom:12px;">${title}</h3>
+                        <p style="color:var(--text-light);margin-bottom:16px;">${desc}</p>
+                        ${item.price > 0 ? `<div style="font-size:28px;font-weight:700;color:var(--primary);margin-bottom:16px;">${priceNum} ${priceLabel}<span style="font-weight:400;font-size:14px;color:#666;">${priceTypeText}</span></div>` : ''}
+                        ${item.detailed ? `<button class="btn btn-outline" onclick="showDetail(${item.id})">Детальніше</button>` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderCard(item) {
+            const imageSrc = getImageUrl(item.image, item.short);
+            const iconSrc = getIconUrl(item.icon, item.short);
+            const iconHtml = iconSrc && iconSrc.endsWith('.svg') 
+                ? `<img src="${iconSrc}" style="width:100%;height:100%;object-fit:contain;">` 
+                : `<span style="font-size:48px;">${item.icon || '📚'}</span>`;
+            const imageHtml = imageSrc 
+                ? `<img src="${imageSrc}" alt="${item.title?.en}" style="width:100%;height:100%;object-fit:cover;">` 
+                : iconHtml;
+            
+            const title = item.title?.[currentLang] || item.title?.en || item.title?.ua || item.title?.ru || '';
+            const desc = item.description?.[currentLang] || item.description?.en || item.description?.ua || item.description?.ru || '';
+            const priceLabel = item.price_type === 'hour' ? 'грн' : 'грн';
+            const priceTypeText = item.price_type === 'hour' ? ' / година' : ' / курс';
+            const priceNum = item.price.toLocaleString('uk-UA');
+            const priceText = item.price > 0 ? `<div class="card-price" style="font-weight:700;"><strong>${priceNum}</strong> ${priceLabel}<span style="font-weight:400;font-size:12px;color:#666;">${priceTypeText}</span></div>` : '';
+            
+            return `
+                <div class="card">
+                    <div class="card-img" style="overflow:hidden;">${imageHtml}</div>
+                    <div class="card-body">
+                        <h3 class="card-title">${title}</h3>
+                        <p class="card-desc">${desc}</p>
+                        ${priceText}
+                        ${item.detailed ? `<button class="btn btn-outline card-btn" style="margin-top:12px" onclick="showDetail(${item.id})">Детальніше</button>` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderAboutSection(title, desc) {
+            return `
+                <section class="section" id="about">
+                    <div class="container">
+                        <h2 class="section-title">${title}</h2>
+                        <div class="about-grid">
+                            <div class="about-img">Т</div>
+                            <div>
+                                <h3 style="font-size:24px;margin-bottom:16px;">Татьяна</h3>
+                                <p>${desc}</p>
+                                <div class="stats">
+                                    <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Років досвіду</div></div>
+                                    <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Учнів</div></div>
+                                    <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Сертифікатів</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderContactsSection(title) {
+            return `
+                <section class="section" id="contacts">
+                    <div class="container">
+                        <h2 class="section-title">${title}</h2>
+                        <div style="text-align:center;max-width:600px;margin:0 auto;">
+                            <p style="margin-bottom:20px;"><strong>Телефон:</strong> <a href="tel:${cmsData.contacts.phone}">${cmsData.contacts.phone}</a></p>
+                            <p style="margin-bottom:20px;"><strong>Email:</strong> <a href="mailto:${cmsData.contacts.email}">${cmsData.contacts.email}</a></p>
+                            <button class="btn btn-primary" onclick="openModal('contact')">Написати повідомлення</button>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderReviewsSection(title, reviews) {
+            return `
+                <section class="section section-gray" id="reviews">
+                    <div class="container">
+                        <h2 class="section-title">${title}</h2>
+                        <div class="grid">
+                            ${reviews.map(r => `
+                                <div class="review-card">
+                                    <p class="review-text">"${r.description[currentLang]}"</p>
+                                    <p class="review-author">— ${r.title[currentLang]}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderFooter() {
+            const services = cmsData.items.filter(i => i.show && i.tags.includes('#Послуга')).slice(0, 4);
+            document.getElementById('footer-services').innerHTML = services.map(i => 
+                `<li><a href="#services">${i.title[currentLang]}</a></li>`
+            ).join('');
+            
+            const social = cmsData.contacts.social;
+            document.getElementById('social-links').innerHTML = `
+                ${social.youtube ? `<a href="${social.youtube}" class="social-link" target="_blank">YT</a>` : ''}
+                ${social.instagram ? `<a href="${social.instagram}" class="social-link" target="_blank">IG</a>` : ''}
+                ${social.facebook ? `<a href="${social.facebook}" class="social-link" target="_blank">FB</a>` : ''}
+                ${social.tiktok ? `<a href="${social.tiktok}" class="social-link" target="_blank">TT</a>` : ''}
+            `;
+            
+            document.getElementById('footer-desc').textContent = cmsData.contacts.footer_desc[currentLang] || cmsData.contacts.footer_desc.ua;
+        }
+
+        function getTranslations() {
+            return {
+                ua: { nav: { home: 'Головна', cta: 'Записатися' } },
+                en: { nav: { home: 'Home', cta: 'Sign Up' } },
+                ru: { nav: { home: 'Главная', cta: 'Записаться' } }
+            }[currentLang];
+        }
+
+        // ==================== CAROUSEL ====================
+        function startCarousel() {
+            setInterval(() => {
+                const slides = document.querySelectorAll('.hero-slide');
+                if (slides.length > 0) {
+                    goToSlide((currentSlide + 1) % slides.length);
+                }
+            }, 3000);
+        }
+
+        function goToSlide(n) {
+            currentSlide = n;
+            document.querySelectorAll('.hero-slide').forEach((slide, i) => {
+                slide.classList.toggle('active', i === n);
+            });
+            document.querySelectorAll('.hero-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === n);
+            });
+        }
+
+        // ==================== MODALS ====================
+        function openModal(type) { 
+            document.getElementById('modal').classList.add('active');
+            updateModalLang();
+        }
+        function closeModal() { 
+            document.getElementById('modal').classList.remove('active');
+            document.querySelector('#modal form').reset();
+            document.getElementById('rating-value').textContent = '4.5';
+        }
+        function closeDetailModal() { document.getElementById('detail-modal').classList.remove('active'); }
+        
+        function showDetail(itemId) {
+            const item = cmsData.items.find(i => i.id === itemId);
+            if (item) {
+                const short = item.short;
+                
+                // Gallery - detect how many images exist (max 4)
+                const images = [];
+                if (short) {
+                    for (let i = 0; i <= 4; i++) {
+                        const suffix = i === 0 ? '00.jpeg' : '0' + i + '.jpeg';
+                        images.push('assets/' + short + '-' + suffix);
+                    }
+                }
+                
+                // Placeholder if no image
+                const hasImage = short && images[0];
+                const placeholderSvg = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'><rect fill='%230057B8' width='16' height='4.5'/><rect fill='%23FFD700' y='4.5' width='16' height='4.5'/></svg>`;
+                
+                const title = item.title?.[currentLang] || item.title?.en || item.title?.ua || '';
+                const desc = item.description?.[currentLang] || item.description?.en || item.description?.ua || '';
+                const details = item.details?.[currentLang] || item.details?.en || '';
+                
+                // Rating: просто число со шкалой
+                const rating = parseFloat(item.rating) || 0;
+                const starsHtml = rating + ' (10)';
+                
+                const priceLabel = item.price_type === 'hour' ? 'грн' : 'грн';
+                const priceTypeText = item.price_type === 'hour' ? ' / година' : ' / курс';
+                const priceNum = item.price.toLocaleString('uk-UA');
+                const priceHtml = item.price > 0 ? `
+                    <div style="font-size:28px;font-weight:700;color:var(--primary);margin-top:15px;">
+                        ${priceNum} ${priceLabel}${priceTypeText}
+                    </div>
+                ` : '';
+                
+                // Thumbnail gallery (below main image)
+                const thumbHtml = images.length > 0 ? `
+                    <div style="display:flex;gap:8px;margin-top:10px;" id="detail-thumbs">
+                        ${images.map((src, i) => `<img src="${src}" data-idx="${i}" style="width:60px;height:40px;object-fit:cover;border-radius:4px;cursor:pointer;border:2px solid #ddd;opacity:0.7;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7" onclick="document.getElementById('detail-main-img').src=this.src">`)}
+                    </div>
+                ` : '';
+                
+                document.getElementById('detail-content').innerHTML = `
+                    <div style="display:grid;grid-template-columns:1fr;gap:15px;">
+                        <div style="border-radius:12px;overflow:hidden;aspect-ratio:16/9;background:linear-gradient(135deg,var(--primary),var(--secondary));">
+                            ${hasImage ? `<img id="detail-main-img" src="${images[0]}" alt="${title}" style="width:100%;height:100%;object-fit:cover;">` : `<img src="${placeholderSvg}" alt="No image" style="width:100%;height:100%;object-fit:cover;">`}
+                        </div>
+                        ${thumbHtml}
+                        <div>
+                            <h2 style="font-size:26px;margin-bottom:8px;">${title}</h2>
+                            <p style="font-size:14px;color:#666;margin-bottom:8px;">${desc}</p>
+                            <div style="color:#ff6b35;font-size:20px;margin-bottom:5px;">${starsHtml}</div>
+                            <div style="background:#f5f5f5;padding:15px;border-radius:8px;margin-bottom:15px;font-size:14px;line-height:1.6;word-wrap:break-word;overflow-wrap:break-word;">
+                                ${details}
+                            </div>
+                            ${priceHtml}
+                        </div>
+                    </div>
+                `;
+                document.getElementById('detail-modal').classList.add('active');
+            }
+        }
+
+        function formatPhone(input) {
+            let v = input.value.replace(/\D/g, '');
+            if (v.length > 10) v = v.slice(0, 10);
+            let res = '+38';
+            if (v.length > 0) res += ' (' + v.slice(0, 3);
+            if (v.length > 3) res += ') ' + v.slice(3, 6);
+            if (v.length > 6) res += '-' + v.slice(6, 8);
+            if (v.length > 8) res += '-' + v.slice(8, 10);
+            input.value = res;
+            // Allow delete by detecting current position
+            if (input.value === '+38 () -') input.value = '';
+        }
+        
+        function submitForm(e) {
+            e.preventDefault();
+            const form = e.target;
+            const captcha = parseInt(form.captcha.value);
+            if (captcha !== 4) {
+                const msgs = { ua: 'Неправильна відповідь!', en: 'Wrong answer!', ru: 'Неправильный ответ!' };
+                alert(msgs[currentLang] || msgs.ua);
+                return;
+            }
+            const thanks = { ua: 'Дякуємо! Я скоро зв\'яжуся з Вами.', en: 'Thank you! I will contact you soon.', ru: 'Спасибо! Я скоро свяжусь с Вами.' };
+            alert(thanks[currentLang] || thanks.ua);
+            closeModal();
+            form.reset();
+        }
+        
+        function updateModalLang() {
+            const t = getTranslations();
+            const labels = {
+                ua: { title: 'Записатися на заняття', name: 'Ім\'я', phone: 'Телефон', msg: 'Повідомлення', captcha: 'Скільки буде 2 + 2?', btn: 'Надіслати' },
+                en: { title: 'Sign Up for a Lesson', name: 'Name', phone: 'Phone', msg: 'Message', captcha: 'What is 2 + 2?', btn: 'Submit' },
+                ru: { title: 'Записаться на занятие', name: 'Имя', phone: 'Телефон', msg: 'Сообщение', captcha: 'Сколько будет 2 + 2?', btn: 'Отправить' }
+            };
+            const l = labels[currentLang] || labels.ua;
+            document.getElementById('modal-title').textContent = l.title;
+            document.getElementById('modal-name-label').textContent = l.name;
+            document.getElementById('modal-phone-label').textContent = l.phone;
+            document.getElementById('modal-msg-label').textContent = l.msg;
+            document.getElementById('modal-captcha-label').textContent = l.captcha;
+            document.getElementById('modal-submit-btn').textContent = l.btn;
+        }
+
+        function toggleMenu() {
+            document.getElementById('nav').classList.toggle('active');
+        }
+
+        // ==================== ADMIN ====================
+        function openAdmin() { document.getElementById('admin-login-modal').classList.add('active'); }
+        function closeAdminLogin() { document.getElementById('admin-login-modal').classList.remove('active'); }
+        
+        function adminLogin(e) {
+            e.preventDefault();
+            const login = document.getElementById('admin-login').value;
+            const password = document.getElementById('admin-password').value;
+            if (login === 'admin' && password === 'admin123') {
+                closeAdminLogin();
+                document.getElementById('admin-panel').classList.add('active');
+                // При входе в админ-панель открываем раздел товаров
+                showAdminSection('items');
+            } else {
+                alert('Невірний логін або пароль');
+            }
+        }
+
+        function closeAdmin() { document.getElementById('admin-panel').classList.remove('active'); }
+        
+        function showAdminSection(section) {
+            document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
+            document.getElementById('admin-' + section).classList.add('active');
+            document.querySelectorAll('.admin-nav button').forEach((b, i) => {
+                const sections = ['items', 'sections', 'tags', 'contacts'];
+                b.classList.toggle('active', sections[i] === section);
+            });
+            
+            if (section === 'items' && !currentItemId) {
+                createNewItem();
+            }
+            if (section === 'sections' && !currentSectionId) {
+                createNewSection();
+            }
+            if (section === 'tags') {
+                renderTagsList();
+            }
+            
+            loadAdminData();
+        }
+
+        function switchAdminLang(type, lang) {
+            adminLang = lang;
+            localStorage.setItem('adminLang', lang);
+            loadAdminData();
+        }
+
+        function initAdminLangTabs() {
+            document.querySelectorAll('.admin-lang-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const lang = this.dataset.lang;
+                    const form = this.closest('form');
+                    
+                    // Update tabs
+                    this.parentElement.querySelectorAll('.admin-lang-tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show/hide fields
+                    form.querySelectorAll('.lang-input').forEach(input => {
+                        input.style.display = input.classList.contains('lang-' + lang) ? 'block' : 'none';
+                    });
+                });
+            });
+            
+            // Tag input enter key
+            document.getElementById('new-item-tag').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    addItemTag();
+                }
+            });
+        }
+
+        // ==================== ADMIN DATA ====================
+        function loadAdminData() {
+            // Items
+            document.getElementById('items-list').innerHTML = cmsData.items.map(i => `
+                <div class="admin-list-item ${i.id === currentItemId ? 'active' : ''}" onclick="editItem(${i.id})">
+                    <div class="admin-list-item-title">${i.title[adminLang] || i.title.ua}</div>
+                    <div class="admin-list-item-meta">${i.tags.join(', ')} | ${i.price > 0 ? i.price + ' грн' : 'безкоштовно'}</div>
+                </div>
+            `).join('');
+            
+            // Sections
+            document.getElementById('sections-count').textContent = `${cmsData.sections.length} розділів`;
+            document.getElementById('sections-list').innerHTML = cmsData.sections.map(s => `
+                <div class="admin-list-item ${s.id === currentSectionId ? 'active' : ''}" onclick="editSection(${s.id})">
+                    <div class="admin-list-item-title">${s.title[adminLang] || s.title.ua}</div>
+                    <div class="admin-list-item-meta">${s.section_type} | ${s.template}</div>
+                </div>
+            `).join('');
+            
+            // Contacts
+            const cf = cmsData.contacts;
+            const form = document.getElementById('contacts-form');
+            form.phone.value = cf.phone || '';
+            form.email.value = cf.email || '';
+            form.footer_desc.value = cf.footer_desc[adminLang] || cf.footer_desc.ua || '';
+            form.youtube.value = cf.social.youtube || '';
+            form.instagram.value = cf.social.instagram || '';
+            form.facebook.value = cf.social.facebook || '';
+            form.tiktok.value = cf.social.tiktok || '';
+        }
+
+        // ==================== ITEMS ====================
+        function editItem(id) {
+            currentItemId = id;
+            const item = cmsData.items.find(i => i.id === id);
+            if (!item) return;
+            
+            currentItemTags = [...item.tags];
+            
+            const form = document.getElementById('item-form');
+            form.short.value = item.short || '';
+            form.title_en.value = item.title?.en || '';
+            form.title_ua.value = item.title?.ua || '';
+            form.title_ru.value = item.title?.ru || '';
+            form.desc_en.value = item.description?.en || '';
+            form.desc_ua.value = item.description?.ua || '';
+            form.desc_ru.value = item.description?.ru || '';
+            form.details_en.value = item.details?.en || '';
+            form.details_ua.value = item.details?.ua || '';
+            form.details_ru.value = item.details?.ru || '';
+            form.price.value = item.price || '';
+            form.price_type.value = item.price_type || 'course';
+            form.rating.value = item.rating || '';
+            form.image.value = item.image || '';
+            form.icon.value = item.icon || '';
+            form.detailed.checked = item.detailed || false;
+            form.show.checked = item.show !== false;
+            
+            renderItemImage(item.image);
+            renderItemTags();
+            populateTagSelector();
+            loadAdminData();
+        }
+
+        function createNewItem() {
+            currentItemId = null;
+            currentItemTags = [];
+            
+            const form = document.getElementById('item-form');
+            form.short.value = '';
+            form.title_en.value = '';
+            form.title_ua.value = '';
+            form.title_ru.value = '';
+            form.desc_en.value = '';
+            form.desc_ua.value = '';
+            form.desc_ru.value = '';
+            form.details_en.value = '';
+            form.details_ua.value = '';
+            form.details_ru.value = '';
+            form.price.value = '';
+            form.price_type.value = 'course';
+            form.rating.value = '4.5';
+            form.image.value = '';
+            form.icon.value = '📚';
+            form.detailed.checked = true;
+            form.show.checked = true;
+            
+            renderItemImage('');
+            renderItemTags();
+            populateTagSelector();
+            loadAdminData();
+        }
+
+        function saveItem() {
+            const form = document.getElementById('item-form');
+            
+            const item = {
+                id: currentItemId || Date.now(),
+                short: form.short.value,
+                title: { en: form.title_en.value, ua: form.title_ua.value, ru: form.title_ru.value },
+                description: { en: form.desc_en.value, ua: form.desc_ua.value, ru: form.desc_ru.value },
+                details: { en: form.details_en.value, ua: form.details_ua.value, ru: form.details_ru.value },
+                price: parseInt(form.price.value) || 0,
+                price_type: form.price_type.value,
+                rating: parseFloat(form.rating.value) || 4.5,
+                tags: currentItemTags,
+                detailed: form.detailed.checked,
+                show: form.show.checked,
+                image: form.image.value,
+                icon: form.icon.value
+            };
+            
+            if (currentItemId) {
+                const index = cmsData.items.findIndex(i => i.id === currentItemId);
+                if (index !== -1) cmsData.items[index] = item;
+            } else {
+                cmsData.items.push(item);
+            }
+            
+            saveData();
+            loadAdminData();
+            alert('Товар збережено!');
+        }
+
+        function deleteItem() {
+            if (!currentItemId || !confirm('Видалити товар?')) return;
+            cmsData.items = cmsData.items.filter(i => i.id !== currentItemId);
+            currentItemId = null;
+            saveData();
+            createNewItem();
+        }
+
+        function renderItemImage(src) {
+            const preview = document.getElementById('image-preview');
+            const imageSrc = getImageUrl(src);
+            if (imageSrc) {
+                preview.innerHTML = `<img src="${imageSrc}" alt="Preview">`;
+            } else {
+                preview.innerHTML = `<span style="color:#999;">Натисніть для вибору зображення</span>`;
+            }
+        }
+
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            // Проверяем расширение
+            const ext = file.name.split('.').pop().toLowerCase();
+            const validExts = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+            if (!validExts.includes(ext)) {
+                alert('Допустимые форматы: jpg, png, gif, webp');
+                return;
+            }
+            
+            // Имя файла - только буквы, цифры и дефис
+            const filename = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64 = e.target.result;
+                
+                // Сохраняем как путь к файлу assets/items/filename
+                const imagePath = 'assets/items/' + filename;
+                document.getElementById('image-path').value = imagePath;
+                renderItemImage(base64);
+                
+                // Сохраняем base64 в localStorage для отображения
+                const imageData = JSON.parse(localStorage.getItem('imageData') || '{}');
+                imageData[imagePath] = base64;
+                localStorage.setItem('imageData', JSON.stringify(imageData));
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function renderItemTags() {
+            const container = document.getElementById('item-tags');
+            container.innerHTML = currentItemTags.map(tag => `
+                <span class="admin-tag">${tag}<span class="admin-tag-remove" onclick="removeItemTag('${tag}')">×</span></span>
+            `).join('');
+        }
+
+        function populateTagSelector() {
+            const selector = document.getElementById('tag-selector');
+            if (!selector || !cmsData.tags) return;
+            selector.innerHTML = '<option value="">Виберіть тег...</option>' + 
+                cmsData.tags.map(t => `<option value="${t.name}">${t.name}</option>`).join('');
+        }
+
+        function addSelectedTag(tag) {
+            if (tag && !currentItemTags.includes(tag)) {
+                currentItemTags.push(tag);
+                renderItemTags();
+            }
+        }
+
+        function addItemTag() {
+            const input = document.getElementById('new-item-tag');
+            const tag = input.value.trim();
+            if (tag && !currentItemTags.includes(tag)) {
+                currentItemTags.push(tag);
+                input.value = '';
+                renderItemTags();
+            }
+        }
+
+        function removeItemTag(tag) {
+            currentItemTags = currentItemTags.filter(t => t !== tag);
+            renderItemTags();
+        }
+
+        // ==================== SECTIONS ====================
+        function editSection(id) {
+            currentSectionId = id;
+            const s = cmsData.sections.find(s => s.id === id);
+            if (!s) return;
+            
+            const form = document.getElementById('section-form');
+            form.short.value = s.short || '';
+            form.title_en.value = s.title?.en || '';
+            form.title_ua.value = s.title?.ua || '';
+            form.title_ru.value = s.title?.ru || '';
+            form.description_en.value = s.description?.en || '';
+            form.description_ua.value = s.description?.ua || '';
+            form.description_ru.value = s.description?.ru || '';
+            form.tags.value = s.tags.join(', ');
+            form.section_type.value = s.section_type || 'custom';
+            form.template.value = s.template || 'cards';
+            form.order.value = s.order || 0;
+            form.show.checked = s.show !== false;
+            form.hero.checked = s.hero || false;
+            
+            loadAdminData();
+        }
+
+        function createNewSection() {
+            currentSectionId = null;
+            
+            const form = document.getElementById('section-form');
+            form.short.value = '';
+            form.title_en.value = '';
+            form.title_ua.value = '';
+            form.title_ru.value = '';
+            form.description_en.value = '';
+            form.description_ua.value = '';
+            form.description_ru.value = '';
+            form.tags.value = '';
+            form.section_type.value = 'custom';
+            form.template.value = 'cards';
+            form.order.value = '0';
+            form.show.checked = true;
+            form.hero.checked = false;
+            
+            loadAdminData();
+        }
+
+        function saveSection() {
+            const form = document.getElementById('section-form');
+            
+            const section = {
+                id: currentSectionId || Date.now(),
+                short: form.short.value,
+                title: { en: form.title_en.value, ua: form.title_ua.value, ru: form.title_ru.value },
+                description: { en: form.description_en.value, ua: form.description_ua.value, ru: form.description_ru.value },
+                tags: form.tags.value.split(',').map(t => t.trim()).filter(t => t),
+                section_type: form.section_type.value,
+                template: form.template.value,
+                order: parseInt(form.order.value) || 0,
+                show: form.show.checked,
+                hero: form.hero.checked
+            };
+            
+            if (currentSectionId) {
+                const index = cmsData.sections.findIndex(s => s.id === currentSectionId);
+                if (index !== -1) cmsData.sections[index] = section;
+            } else {
+                cmsData.sections.push(section);
+            }
+            
+            saveData();
+            loadAdminData();
+            alert('Розділ збережено!');
+        }
+
+        function deleteSection() {
+            if (!currentSectionId || !confirm('Видалити розділ?')) return;
+            cmsData.sections = cmsData.sections.filter(s => s.id !== currentSectionId);
+            currentSectionId = null;
+            saveData();
+            createNewSection();
+        }
+
+        // ==================== TAGS ====================
+        function renderTagsList() {
+            if (!cmsData.tags) cmsData.tags = [];
+            const list = document.getElementById('tags-list');
+            list.innerHTML = cmsData.tags.map(tag => `
+                <div class="admin-list-item" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding:12px;border:1px solid #eee;border-radius:5px;">
+                    <div>
+                        <div class="admin-list-item-title">${tag.name}</div>
+                        <div class="admin-list-item-meta">${tag.description || ''}</div>
+                    </div>
+                    <button class="btn btn-outline" onclick="deleteTag(${tag.id})" style="padding:5px 10px;">×</button>
+                </div>
+            `).join('');
+        }
+
+        function addNewTag() {
+            const input = prompt('Введіть тег у форматі: Назва | Опис\nНаприклад: courses | Основні курси\n(англійською, без #)');
+            if (!input) return;
+            
+            const parts = input.split('|').map(p => p.trim());
+            const name = parts[0];
+            const description = parts[1] || '';
+            
+            if (!name) {
+                alert('Введіть назву тега!');
+                return;
+            }
+            if (!cmsData.tags) cmsData.tags = [];
+            if (cmsData.tags.find(t => t.name === name)) {
+                alert('Такий тег вже існує!');
+                return;
+            }
+            cmsData.tags.push({ id: Date.now(), name, description });
+            saveData();
+            renderTagsList();
+        }
+
+        function deleteTag(id) {
+            if (!confirm('Видалити тег?')) return;
+            cmsData.tags = cmsData.tags.filter(t => t.id !== id);
+            saveData();
+            renderTagsList();
+        }
+
+        function saveTags() {
+            saveData();
+            renderTagsList();
+            alert('Тегі збережено!');
+        }
+
+        // ==================== CONTACTS ====================
+        function saveContacts() {
+            const form = document.getElementById('contacts-form');
+            
+            cmsData.contacts.phone = form.phone.value;
+            cmsData.contacts.email = form.email.value;
+            
+            if (!cmsData.contacts.footer_desc) cmsData.contacts.footer_desc = {};
+            cmsData.contacts.footer_desc[adminLang] = form.footer_desc.value;
+            
+            if (!cmsData.contacts.social) cmsData.contacts.social = {};
+            cmsData.contacts.social.youtube = form.youtube.value;
+            cmsData.contacts.social.instagram = form.instagram.value;
+            cmsData.contacts.social.facebook = form.facebook.value;
+            cmsData.contacts.social.tiktok = form.tiktok.value;
+            
+            saveData();
+            alert('Контакти збережено!');
+        }
+
+        // ==================== STORAGE ====================
+        function saveData() {
+            localStorage.setItem('cmsData', JSON.stringify(cmsData));
+            renderContent();
+        }
+
+        // Start
+        init();
+    </script>
+</body>
+</html>
