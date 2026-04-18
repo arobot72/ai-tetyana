@@ -4,14 +4,14 @@
       "id": 1,
       "short": "ukr_30",
       "title": {
-        "en": "Ukrainian from Scratch in 30 Days",
-        "ua": "Українська з нуля за 30 днів",
-        "ru": "Украинский с нуля за 30 дней"
+        "en": "Ukrainian 30 days",
+        "ua": "Українська 30 днів",
+        "ru": "Украинский 30 дней"
       },
       "description": {
-        "en": "Guaranteed start in 1 month",
-        "ua": "Гарантований старт за 1 місяць",
-        "ru": "Гарантированный старт за 1 месяц"
+        "en": "Language start in 1 month",
+        "ua": "Мовний старт за 1 місяць",
+        "ru": "Языковой старт за 1 месяц"
       },
       "details": {
         "en": "<b>For whom:</b> complete beginner<br><b>Format:</b> 12-15 lessons + homework + checklists<br><b>Inside:</b><ul><li>Alphabet + reading</li><li>Basic grammar</li><li>300-500 words</li><li>Mini dialogues</li></ul><b>Result:</b> you start speaking freely with simple phrases",
@@ -20,7 +20,9 @@
       },
       "price": 1800,
       "price_type": "course",
-      "tags": ["courses"],
+      "tags": [
+        "courses"
+      ],
       "rating": 9.1,
       "detailed": true,
       "show": true,
@@ -32,9 +34,9 @@
       "id": 2,
       "short": "ukr_for_live",
       "title": {
-        "en": "Conversational Ukrainian for Life",
-        "ua": "Розмовна українська для життя",
-        "ru": "Разговорный украинский для жизни"
+        "en": "Ukrainian for Life",
+        "ua": "Українська для життя",
+        "ru": "Украинский для жизни"
       },
       "description": {
         "en": "Top product",
@@ -48,7 +50,9 @@
       },
       "price": 1500,
       "price_type": "course",
-      "tags": ["courses"],
+      "tags": [
+        "courses"
+      ],
       "rating": 9.4,
       "detailed": true,
       "show": true,
@@ -75,7 +79,9 @@
       },
       "price": 4500,
       "price_type": "course",
-      "tags": ["services"],
+      "tags": [
+        "services"
+      ],
       "rating": 9.2,
       "detailed": true,
       "show": true,
@@ -86,14 +92,14 @@
       "id": 4,
       "short": "exam",
       "title": {
-        "en": "Exam/Test Preparation",
-        "ua": "Підготовка до іспиту / тесту",
-        "ru": "Подготовка к экзамену / тесту"
+        "en": "Exam / Test",
+        "ua": "Iспит / Тест",
+        "ru": "Экзамен / Тесту"
       },
       "description": {
-        "en": "You can do everything",
-        "ua": "Ти можеш все",
-        "ru": "Ты можешь всё"
+        "en": "You can do everything. Preparation for exam or test",
+        "ua": "Зможеш все. Підготовка до іспиту / тест",
+        "ru": "Можешь всё. Подготовка к экзамену / тесту"
       },
       "details": {
         "en": "<b>For whom:</b> schoolchildren / adults / government employees<br><b>Format:</b> 15-20 lessons<br><b>Inside:</b><ul><li>Task analysis</li><li>Test practice</li><li>Exam strategies</li></ul><b>Result:</b> score increase",
@@ -102,7 +108,9 @@
       },
       "price": 2700,
       "price_type": "course",
-      "tags": ["services"],
+      "tags": [
+        "services"
+      ],
       "rating": 9.0,
       "detailed": true,
       "show": true,
@@ -113,14 +121,14 @@
       "id": 5,
       "short": "child",
       "title": {
-        "en": "Ukrainian for Kids (Game Course)",
-        "ua": "Українська для дітей (ігровий курс)",
-        "ru": "Украинский для детей (игровой курс)"
+        "en": "Ukrainian for Kids",
+        "ua": "Українська дітям",
+        "ru": "Украинский детям"
       },
       "description": {
-        "en": "Funner than ordinary lessons",
-        "ua": "Веселіше, ніж звичайні уроки",
-        "ru": "Веселей, чем обычные уроки"
+        "en": "Game Course. Funner than ordinary lessons",
+        "ua": "Iгровий курс. Веселіше, ніж уроки",
+        "ru": "Игровой курс. Веселей, чем обычные уроки"
       },
       "details": {
         "en": "<b>For whom:</b> children 6-12 years<br><b>Format:</b> 8-12 lessons<br><b>Inside:</b><ul><li>Games</li><li>Cards</li><li>Mini tasks</li></ul><b>Result:</b> child learns language without stress",
@@ -129,7 +137,9 @@
       },
       "price": 1800,
       "price_type": "course",
-      "tags": ["courses"],
+      "tags": [
+        "courses"
+      ],
       "rating": 9.1,
       "detailed": true,
       "show": true,
@@ -156,7 +166,9 @@
       },
       "price": 950,
       "price_type": "course",
-      "tags": ["courses"],
+      "tags": [
+        "courses"
+      ],
       "rating": 8.7,
       "detailed": true,
       "show": true,
@@ -167,14 +179,14 @@
       "id": 7,
       "short": "no_error",
       "title": {
-        "en": "Error-Free: Grammar in 10 Lessons",
-        "ua": "Без помилок: граматика за 10 занять",
-        "ru": "Без ошибок: грамматика за 10 занятий"
+        "en": "Grammar",
+        "ua": "Граматика",
+        "ru": "Грамматика"
       },
       "description": {
-        "en": "Writing in 10 days",
-        "ua": "Письмо за 10 днів",
-        "ru": "Письмо за 10 дней"
+        "en": "10 lessons. Writing without error",
+        "ua": "10 занять письма без помилок",
+        "ru": "10 занятий письма без ошибок"
       },
       "details": {
         "en": "<b>For whom:</b> already speaks but with errors<br><b>Inside:</b><ul><li>Common mistakes</li><li>Speech analysis</li><li>Personal corrections</li></ul><b>Result:</b> clean, correct speech",
@@ -183,10 +195,13 @@
       },
       "price": 1800,
       "price_type": "course",
-      "tags": ["services"],
+      "tags": [
+        "services"
+      ],
       "rating": 9.1,
       "detailed": true,
       "show": true,
+      "show_in_hero": true,
       "image": "no_error-00.jpeg",
       "icon": "no_error-88.svg"
     },
@@ -194,14 +209,14 @@
       "id": 8,
       "short": "mentor",
       "title": {
-        "en": "VIP Support (Mentoring)",
-        "ua": "VIP супровід (менторство)",
-        "ru": "VIP сопровождение (менторство)"
+        "en": "VIP Support",
+        "ua": "VIP супровід",
+        "ru": "VIP сопровождение"
       },
       "description": {
-        "en": "We will handle everything together",
-        "ua": "Разом справимось з усім",
-        "ru": "Вместе справимся со всем"
+        "en": "Mentoring. We will handle everything together",
+        "ua": "Менторство. Разом справимось з усім",
+        "ru": "Менторство. Вместе справимся со всем"
       },
       "details": {
         "en": "<b>For whom:</b> busy people<br><b>Inside:</b><ul><li>Lessons + 24/7 chat</li><li>Message checking</li><li>Voice corrections</li></ul><b>Result:</b> fast progress",
@@ -210,9 +225,12 @@
       },
       "price": 4500,
       "price_type": "course",
-      "tags": ["services"],
+      "tags": [
+        "services"
+      ],
       "rating": 9.0,
       "detailed": true,
+      "show_in_hero": true,
       "show": true,
       "image": "mentor-00.jpeg",
       "icon": "mentor-88.svg"
@@ -232,7 +250,9 @@
         "ua": "Вивчай українську на наших курсах",
         "ru": "Изучай украинский на наших курсах"
       },
-      "tags": ["courses"],
+      "tags": [
+        "courses"
+      ],
       "section_type": "courses",
       "template": "cards",
       "show": true,
@@ -254,7 +274,9 @@
         "ua": "Професійні послуги репетитора",
         "ru": "Профессиональные услуги репетитора"
       },
-      "tags": ["services"],
+      "tags": [
+        "services"
+      ],
       "section_type": "services",
       "template": "cards",
       "show": true,
@@ -265,8 +287,16 @@
     }
   ],
   "tags": [
-    { "id": 1, "name": "courses", "description": "Курсы" },
-    { "id": 2, "name": "services", "description": "Услуги" }
+    {
+      "id": 1,
+      "name": "courses",
+      "description": "Курсы"
+    },
+    {
+      "id": 2,
+      "name": "services",
+      "description": "Услуги"
+    }
   ],
   "contacts": {
     "phone": "+38 (050) 123-45-67",

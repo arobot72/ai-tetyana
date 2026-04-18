@@ -40,7 +40,7 @@
         
         /* Hero */
         .hero { position: relative; height: 500px; overflow: hidden; background: linear-gradient(135deg, var(--primary) 0%, #003d7a 100%); }
-        .hero-slider { height: 100%; }
+        .hero-slider { height: 50vh; min-height: 300px; max-height: 400px; }
         .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.5s; display: flex; align-items: center; }
         .hero-slide.active { opacity: 1; }
         .hero-slide-content { color: white; text-align: center; width: 100%; padding: 0 20px; }
@@ -197,7 +197,7 @@
         <div class="container header-inner">
             <a href="#home" class="logo">
                 <img src="assets/home-icon.svg" alt="Home" style="width:40px;height:40px;">
-                <span class="logo-text">Тетяна<br style="font-size:14px;margin-left:45px;">мовний репетитор</span>
+                <span class="logo-text" style="line-height:1.1;">Тетяна<br><span style="font-size:12px;">мовний репетитор</span></span>
             </a>
             <nav class="nav" id="nav"></nav>
             <div class="header-right" style="display:flex;gap:15px;align-items:center;">
@@ -225,14 +225,18 @@
     <footer class="footer">
         <div class="container footer-inner">
             <div>
-<a href="#home" class="logo" style="margin-bottom:20px;">
-                <img src="assets/home-icon.svg" alt="Home" style="width:40px;height:40px;">
-                <span class="logo-text">Тетяна<br style="font-size:14px;margin-left:45px;">мовний репетитор</span>
-            </a>
+                <a href="#home" class="logo" style="margin-bottom:20px;">
+                    <img src="assets/home-icon.svg" alt="Home" style="width:40px;height:40px;">
+                    <span class="logo-text" style="line-height:1.1;">Тетяна<br><span style="font-size:12px;">мовний репетитор</span></span>
+                </a>
                 <p style="opacity:0.8;" id="footer-desc"></p>
             </div>
             <div>
-                <h4 class="footer-title" data-i18n="footer.products">Послуги</h4>
+                <h4 class="footer-title" data-i18n="footer.courses">Курси</h4>
+                <ul class="footer-links" id="footer-courses"></ul>
+            </div>
+            <div>
+                <h4 class="footer-title" data-i18n="footer.services">Послуги</h4>
                 <ul class="footer-links" id="footer-services"></ul>
             </div>
             <div>
@@ -382,12 +386,16 @@
                                 </div>
                             </div>
                             <div class="checkbox-group">
-                                <input type="checkbox" name="detailed" id="detailed-check">
-                                <label for="detailed-check">Відкривати деталі у вікні</label>
-                            </div>
-                            <div class="checkbox-group">
                                 <input type="checkbox" name="show" id="show-check" checked>
                                 <label for="show-check">Показувати на сайті</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" name="show_in_hero" id="hero-check">
+                                <label for="hero-check">Показати у Банері (HERO)</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" name="detailed" id="detailed-check">
+                                <label for="detailed-check">Відкривати деталі у вікні</label>
                             </div>
                         </form>
                     </div>
@@ -676,7 +684,7 @@
                             </div>
                         </div>
                         <div style="flex:1;text-align:right;">
-                            <img src="${imgSrc}" alt="${item.title?.en || ''}" style="max-width:400px;max-height:300px;border-radius:12px;object-fit:cover;box-shadow:0 8px 32px rgba(0,0,0,0.3);">
+                            <img src="${imgSrc}" alt="${item.title?.en || ''}" style="max-width:350px;max-height:280px;border-radius:12px;object-fit:cover;box-shadow:0 8px 32px rgba(0,0,0,0.3);">
                         </div>
                     </div>
                 </div>
@@ -905,20 +913,25 @@
             `;
         }
 
-        function renderFooter() {
-            const services = cmsData.items.filter(i => i.show && i.tags.includes('#Послуга')).slice(0, 4);
-            document.getElementById('footer-services').innerHTML = services.map(i => 
-                `<li><a href="#services">${i.title[currentLang]}</a></li>`
-            ).join('');
+function renderFooter() {
+            // Курсы - из раздела courses (tag: courses)
+            const courses = cmsData.items.filter(i => i.show && i.tags?.includes('courses')).slice(0, 5);
+            document.getElementById('footer-courses').innerHTML = courses.map(i => {
+                const title = i.title?.[currentLang] || i.title?.en || i.title?.ua || i.short || 'Курс';
+                return `<li style="margin-bottom:8px;">
+                    <a href="#" onclick="showDetail(${i.id});return false" style="text-decoration:none;color:#fff;">${title}</a>
+                </li>`;
+            }).join('');
             
-            const social = cmsData.contacts.social;
-            document.getElementById('social-links').innerHTML = `
-                ${social.youtube ? `<a href="${social.youtube}" class="social-link" target="_blank">YT</a>` : ''}
-                ${social.instagram ? `<a href="${social.instagram}" class="social-link" target="_blank">IG</a>` : ''}
-                ${social.facebook ? `<a href="${social.facebook}" class="social-link" target="_blank">FB</a>` : ''}
-                ${social.tiktok ? `<a href="${social.tiktok}" class="social-link" target="_blank">TT</a>` : ''}
-            `;
-            
+            // Послуги - из раздела services (tag: services)
+            const services = cmsData.items.filter(i => i.show && i.tags?.includes('services')).slice(0, 5);
+            document.getElementById('footer-services').innerHTML = services.map(i => {
+                const title = i.title?.[currentLang] || i.title?.en || i.title?.ua || i.short || 'Послуга';
+                return `<li style="margin-bottom:8px;">
+                    <a href="#" onclick="showDetail(${i.id});return false" style="text-decoration:none;color:#fff;">${title}</a>
+                </li>`;
+}).join('');
+             
             document.getElementById('footer-desc').textContent = cmsData.contacts.footer_desc[currentLang] || cmsData.contacts.footer_desc.ua;
         }
 
@@ -1218,6 +1231,7 @@
             form.icon.value = item.icon || '';
             form.detailed.checked = item.detailed || false;
             form.show.checked = item.show !== false;
+            form.show_in_hero.checked = item.show_in_hero === true;
             
             renderItemImage(item.image);
             renderItemTags();
@@ -1247,6 +1261,7 @@
             form.icon.value = '📚';
             form.detailed.checked = true;
             form.show.checked = true;
+            form.show_in_hero.checked = false;
             
             renderItemImage('');
             renderItemTags();
@@ -1267,8 +1282,9 @@
                 price_type: form.price_type.value,
                 rating: parseFloat(form.rating.value) || 4.5,
                 tags: currentItemTags,
-                detailed: form.detailed.checked,
                 show: form.show.checked,
+                show_in_hero: form.show_in_hero.checked,
+                detailed: form.detailed.checked,
                 image: form.image.value,
                 icon: form.icon.value
             };
@@ -1525,6 +1541,18 @@
         // ==================== STORAGE ====================
         function saveData() {
             localStorage.setItem('cmsData', JSON.stringify(cmsData));
+            
+            // Скачать обновлённый data.json для ручной загрузки на сервер
+            const jsonStr = JSON.stringify(cmsData, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'data.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            alert('✅ Зміни збережено!\n\n📥 data.json скачано.\n👉 Завантажте його на сервер.');
             renderContent();
         }
 
