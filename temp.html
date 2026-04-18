@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Татьяна - репетитор з української мови та літератури. Підготовка до ЗНО/НМТ, сертифікація, переклад текстів.">
+    <meta name="keywords" content="репетитор, українська мова, підготовка до ЗНО, НМТ, сертифікація">
+    <meta name="author" content="Татьяна">
+    <meta property="og:title" content="Татьяна - Репетитор з української мови">
+    <meta property="og:description" content="Індивідуальні заняття, підготовка до ЗНО/НМТ, переклад та коректура">
+    <meta property="og:type" content="website">
+    <title>Татьяна - Репетитор з української мови та літератури</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-inner">
+            <a href="#home" class="logo">
+                <span class="logo-icon">Т</span>
+                <span class="logo-text">Татьяна</span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="#home" class="nav-link" data-i18n="nav.home">Головна</a>
+                <a href="#services" class="nav-link" data-i18n="nav.services">Послуги</a>
+                <a href="#courses" class="nav-link" data-i18n="nav.courses">Курси</a>
+                <a href="#about" class="nav-link" data-i18n="nav.about">Про мене</a>
+                <a href="#contacts" class="nav-link" data-i18n="nav.contacts">Контакти</a>
+                <button class="btn btn-primary nav-cta" onclick="openModal('contact')" data-i18n="nav.cta">Записатися</button>
+            </nav>
+            <div class="header-right">
+                <div class="lang-switcher">
+                    <select id="lang-select" onchange="setLanguage(this.value)">
+                        <option value="ua">UA</option>
+                        <option value="en">EN</option>
+                        <option value="ru">RU</option>
+                    </select>
+                </div>
+                <button class="burger" id="burger" aria-label="Меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="app">
+        <!-- Content loaded dynamically -->
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-section">
+                <a href="#home" class="logo">
+                    <span class="logo-icon">Т</span>
+                    <span class="logo-text">Татьяна</span>
+                </a>
+                <div class="contact-info">
+                    <a href="tel:+380501234567" class="contact-link">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <span>+38 (050) 123-45-67</span>
+                    </a>
+                    <a href="mailto:tetyana@example.com" class="contact-link">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <span>tetyana@example.com</span>
+                    </a>
+                </div>
+                <button class="btn btn-outline" onclick="openModal('contact')" data-i18n="footer.message">Залишити повідомлення</button>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-title" data-i18n="footer.products">Послуги</h4>
+                <ul class="footer-links" id="footer-services"></ul>
+            </div>
+            <div class="footer-section">
+                <h4 class="footer-title" data-i18n="footer.social">Соцмережі</h4>
+                <div class="social-links">
+                    <a href="https://youtube.com" target="_blank" class="social-link" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="social-link" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="https://facebook.com" target="_blank" class="social-link" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="https://tiktok.com" target="_blank" class="social-link" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2024 Татьяна. <span data-i18n="footer.rights">Всі права захищені</span></p>
+                <a href="#" onclick="openAdmin(); return false" style="font-size:12px; opacity:0.5">Admin</a>
+            </div>
+        </div>
+    </footer>
+
+<!-- Admin Panel -->
+    <div class="admin-panel" id="admin-panel">
+        <div class="admin-header">
+            <div class="admin-logo">Адмін-панель</div>
+            <div class="admin-nav">
+                <button class="active" onclick="showAdminSection('products')" data-i18n="admin.products">Товари</button>
+                <button onclick="showAdminSection('sections')" data-i18n="admin.sections">Розділи</button>
+                <button onclick="showAdminSection('reviews')" data-i18n="admin.reviews">Відгуки</button>
+                <button onclick="showAdminSection('settings')" data-i18n="admin.settings">Налаштування</button>
+                <button onclick="closeAdmin()" class="btn btn-outline" title="Вийти з адмінки">✕</button>
+            </div>
+        </div>
+        <div class="admin-content">
+            <!-- Products Section -->
+            <div class="admin-section active" id="admin-products">
+                <div class="admin-grid">
+                    <div class="admin-sidebar">
+                        <div class="admin-list-header">
+                            <select id="admin-product-lang" onchange="switchAdminLang('products', this.value)">
+                                <option value="ua">UA</option>
+                                <option value="en">EN</option>
+                                <option value="ru">RU</option>
+                            </select>
+                            <button class="btn btn-primary icon-btn" onclick="createNewProduct()" title="Додати товар">+</button>
+                        </div>
+                        <div class="admin-list-items" id="products-list"></div>
+                    </div>
+                    <div class="admin-editor">
+                        <div class="admin-editor-header">
+                            <h3 id="product-editor-title">Редагування товару</h3>
+                            <div class="admin-editor-actions">
+                                <button type="button" class="btn btn-outline icon-btn" onclick="deleteProduct()" title="Видалити">🗑️</button>
+                                <button type="submit" form="product-form" class="btn btn-primary icon-btn" title="Зберегти">💾</button>
+                            </div>
+                        </div>
+                        <form class="admin-form" id="product-form" onsubmit="saveProduct(event)">
+                            <div class="form-group">
+                                <label>Заголовок</label>
+                                <input type="text" name="title" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Опис</label>
+                                <textarea name="description"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Детально - HTML</label>
+                                <textarea name="details" placeholder="<p>HTML...</p>"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Фото (URL)</label>
+                                <input type="text" name="mainImage" placeholder="url фото">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Ціна (грн)</label>
+                                    <input type="number" name="price" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Рейтинг</label>
+                                    <input type="number" name="rating" step="0.1" min="1" max="5" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Теги</label>
+                                <div class="tags-input" id="product-tags">
+                                    <span class="tag">#Послуга <span class="tag-remove" onclick="removeProductTag('#Послуга')">×</span></span>
+                                </div>
+                                <input type="text" id="new-product-tag" placeholder="Тег + Enter" class="tag-input">
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" name="detailed" id="detailed-check">
+                                <label for="detailed-check">Деталі у вікні</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sections Section -->
+            <div class="admin-section" id="admin-sections">
+                <div class="admin-grid">
+                    <div class="admin-sidebar">
+                        <div class="admin-list-header">
+                            <select id="admin-section-lang" onchange="switchAdminLang('sections', this.value)">
+                                <option value="ua">UA</option>
+                                <option value="en">EN</option>
+                                <option value="ru">RU</option>
+                            </select>
+                            <button class="btn btn-primary icon-btn" onclick="createNewSection()" title="Додати розділ">+</button>
+                        </div>
+                        <div class="admin-list-items" id="sections-list"></div>
+                    </div>
+                    <div class="admin-editor">
+                        <div class="admin-editor-header">
+                            <h3>Редагування розділу</h3>
+                            <div class="admin-editor-actions">
+                                <button type="button" class="btn btn-outline icon-btn" onclick="deleteSection()" title="Видалити">🗑️</button>
+                                <button type="submit" form="section-form" class="btn btn-primary icon-btn" title="Зберегти">💾</button>
+                            </div>
+                        </div>
+                        <form class="admin-form" id="section-form" onsubmit="saveSection(event)">
+                            <div class="form-group">
+                                <label>Назва</label>
+                                <input type="text" name="title" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Опис</label>
+                                <textarea name="description"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Теги</label>
+                                <input type="text" name="tags" placeholder="#Тег1, #Тег2">
+                            </div>
+                            <div class="form-group">
+                                <label>Центрування</label>
+                                <select name="center">
+                                    <option value="left">Ліворуч</option>
+                                    <option value="right">Праворуч</option>
+                                    <option value="alternate">Чергувати</option>
+                                </select>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" name="show" id="section-show" checked>
+                                <label for="section-show">Показувати</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" name="carousel" id="section-carousel">
+                                <label for="section-carousel">Карусель</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" name="list" id="section-list" checked>
+                                <label for="section-list">Список</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reviews Section -->
+            <div class="admin-section" id="admin-reviews">
+                <div class="admin-grid">
+                    <div class="admin-sidebar">
+                        <div class="admin-list-header">
+                            <select id="admin-review-lang" onchange="switchAdminLang('reviews', this.value)">
+                                <option value="ua">UA</option>
+                                <option value="en">EN</option>
+                                <option value="ru">RU</option>
+                            </select>
+                            <button class="btn btn-primary icon-btn" onclick="createNewReview()" title="Додати відгук">+</button>
+                        </div>
+                        <div class="admin-list-items" id="reviews-list"></div>
+                    </div>
+                    <div class="admin-editor">
+                        <div class="admin-editor-header">
+                            <h3>Редагування відгуку</h3>
+                            <div class="admin-editor-actions">
+                                <button type="button" class="btn btn-outline icon-btn" onclick="deleteReview()" title="Видалити">🗑️</button>
+                                <button type="submit" form="review-form" class="btn btn-primary icon-btn" title="Зберегти">💾</button>
+                            </div>
+                        </div>
+                        <form class="admin-form" id="review-form" onsubmit="saveReview(event)">
+                            <div class="form-group">
+                                <label>Відгук</label>
+                                <textarea name="text" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Автор</label>
+                                <input type="text" name="author" required>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div class="admin-section" id="admin-settings">
+                <div class="admin-editor" style="max-width: 600px; margin: 0 auto;">
+                    <div class="admin-editor-header">
+                        <h3>Налаштування</h3>
+                        <div class="admin-editor-actions">
+                            <button type="submit" form="seo-form" class="btn btn-primary icon-btn" title="Зберегти">💾</button>
+                        </div>
+                    </div>
+                        <form class="admin-form" id="seo-form" onsubmit="saveSEO(event)">
+                            <div class="form-section">
+                                <h4>SEO</h4>
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <input type="text" name="home_title">
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea name="home_desc"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-section">
+                                <h4>Контакти</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Телефон</label>
+                                        <input type="text" name="phone">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" name="email">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>YouTube</label>
+                                        <input type="url" name="youtube">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Instagram</label>
+                                        <input type="url" name="instagram">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Facebook</label>
+                                        <input type="url" name="facebook">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>TikTok</label>
+                                        <input type="url" name="tiktok">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

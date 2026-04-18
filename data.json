@@ -24,6 +24,7 @@
       "rating": 9.1,
       "detailed": true,
       "show": true,
+      "show_in_hero": true,
       "image": "ukr_30-00.jpeg",
       "icon": "ukr_30-88.svg"
     },

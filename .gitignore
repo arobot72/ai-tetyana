@@ -21,6 +21,9 @@ logs/
 # Test results
 test-results/
 
+# Screenshots
+screenshots/
+
 # OpenCode system
 .opencode/
 spec/

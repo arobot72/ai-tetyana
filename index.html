@@ -31,6 +31,8 @@
         .btn { padding: 10px 20px; border-radius: 8px; font-weight: 500; border: none; transition: all 0.3s; }
         .btn-primary { background: var(--primary); color: white; }
         .btn-primary:hover { background: var(--primary-dark); }
+        .btn-secondary { background: transparent; border: 2px solid white; color: white; }
+        .btn-secondary:hover { background: white; color: var(--primary); }
         .btn-outline { background: transparent; border: 1px solid var(--border); }
         .btn-outline:hover { background: var(--primary); color: #FFD700; font-weight: bold; }
         .burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; }
@@ -194,8 +196,8 @@
     <header class="header">
         <div class="container header-inner">
             <a href="#home" class="logo">
-                <span class="logo-icon">Т</span>
-                <span class="logo-text">Татьяна</span>
+                <img src="assets/home-icon.svg" alt="Home" style="width:40px;height:40px;">
+                <span class="logo-text">Тетяна<br style="font-size:14px;margin-left:45px;">мовний репетитор</span>
             </a>
             <nav class="nav" id="nav"></nav>
             <div class="header-right" style="display:flex;gap:15px;align-items:center;">
@@ -223,10 +225,10 @@
     <footer class="footer">
         <div class="container footer-inner">
             <div>
-                <a href="#home" class="logo" style="margin-bottom:20px;">
-                    <span class="logo-icon">Т</span>
-                    <span class="logo-text">Татьяна</span>
-                </a>
+<a href="#home" class="logo" style="margin-bottom:20px;">
+                <img src="assets/home-icon.svg" alt="Home" style="width:40px;height:40px;">
+                <span class="logo-text">Тетяна<br style="font-size:14px;margin-left:45px;">мовний репетитор</span>
+            </a>
                 <p style="opacity:0.8;" id="footer-desc"></p>
             </div>
             <div>
@@ -541,6 +543,7 @@
 
         // ==================== STATE ====================
         let cmsData = {};
+        window.cmsData = cmsData; // Глобальный доступ
         let currentLang = localStorage.getItem('lang') || 'ua';
         let adminLang = localStorage.getItem('adminLang') || 'ua';
         let currentSlide = 0;
@@ -550,19 +553,13 @@
 
         // ==================== INIT ====================
         async function init() {
-            // Сначала проверяем localStorage (данные из админки)
-            const savedData = localStorage.getItem('cmsData');
-            if (savedData) {
-                try {
+            // Всегда загружаем из data.json (или localStorage если есть)
+            try {
+                const savedData = localStorage.getItem('cmsData');
+                if (savedData) {
                     cmsData = JSON.parse(savedData);
                     console.log('Загружено из localStorage');
-                } catch(e) {
-                    console.log('Ошибка чтения localStorage, используем данные по умолчанию');
-                    cmsData = getHardcodedData();
-                }
-            } else {
-                // Нет данных в localStorage - пробуем загрузить из data.json
-                try {
+                } else {
                     const response = await fetch('data.json');
                     if (response.ok) {
                         cmsData = await response.json();
@@ -570,12 +567,13 @@
                     } else {
                         throw new Error('data.json not found');
                     }
-                } catch (e) {
-                    console.log('data.json не загружен, используем встроенные данные...');
-                    cmsData = getHardcodedData();
                 }
+            } catch (e) {
+                console.log('Ошибка загрузки, используем fallback:', e.message);
+                cmsData = getHardcodedData();
             }
             
+            window.cmsData = cmsData;
             setLanguage(currentLang);
             startCarousel();
             renderContent();
@@ -652,14 +650,11 @@
             const heroSlider = document.getElementById('hero-slider');
             const heroNav = document.getElementById('hero-nav');
             
-            // Hero shows items from sections marked as hero
-            const heroSections = cmsData.sections.filter(s => s.show && s.hero);
-            const heroItems = heroSections.flatMap(s => 
-                cmsData.items.filter(i => i.show && i.tags?.some(tag => s.tags?.includes(tag))))
-            .slice(0, 5);
+            // Hero shows items with show_in_hero: true
+            const heroItems = cmsData.items.filter(i => i.show && i.show_in_hero).slice(0, 5);
             
             if (heroItems.length === 0) {
-                // Fallback to first 3 items
+                // Fallback to first 3 items with show: true
                 heroItems = cmsData.items.filter(i => i.show).slice(0, 3);
             }
             
@@ -667,13 +662,22 @@
                 const priceLabel = item.price_type === 'hour' ? 'грн' : 'грн';
                 const priceTypeText = item.price_type === 'hour' ? ' / година' : ' / курс';
                 const priceNum = item.price.toLocaleString('uk-UA');
+                const imgSrc = item.image ? 'assets/' + item.image : 'assets/placeholder.svg';
                 return `
-                <div class="hero-slide ${i === 0 ? 'active' : ''}">
-                    <div class="container hero-slide-content">
-                        <h1 class="hero-slide-title">${item.title?.[currentLang] || item.title?.en || ''}</h1>
-                        <p class="hero-slide-desc">${item.description?.[currentLang] || item.description?.en || ''}</p>
-                        ${item.price > 0 ? `<p style="font-size:18px;font-weight:600;">${priceNum} ${priceLabel}<span style="font-weight:400;">${priceTypeText}</span></p>` : ''}
-                        <button class="btn btn-primary" onclick="openModal('contact')">${t.nav.cta}</button>
+                <div class="hero-slide ${i === 0 ? 'active' : ''}" style="background:linear-gradient(135deg,var(--primary),var(--secondary));">
+                    <div class="container hero-slide-content" style="display:flex;align-items:center;justify-content:space-between;gap:40px;">
+                        <div style="flex:1;text-align:left;">
+                            <h1 class="hero-slide-title">${item.title?.[currentLang] || item.title?.en || ''}</h1>
+                            <p class="hero-slide-desc">${item.description?.[currentLang] || item.description?.en || ''}</p>
+                            ${item.price > 0 ? `<p style="font-size:18px;font-weight:600;">${priceNum} ${priceLabel}<span style="font-weight:400;">${priceTypeText}</span></p>` : ''}
+                            <div style="display:flex;gap:12px;margin-top:20px;">
+                                <button class="btn btn-secondary" onclick="showDetail(${item.id})">Детально</button>
+                                <button class="btn btn-primary" onclick="openModal('contact')">${t.nav.cta}</button>
+                            </div>
+                        </div>
+                        <div style="flex:1;text-align:right;">
+                            <img src="${imgSrc}" alt="${item.title?.en || ''}" style="max-width:400px;max-height:300px;border-radius:12px;object-fit:cover;box-shadow:0 8px 32px rgba(0,0,0,0.3);">
+                        </div>
                     </div>
                 </div>
             `}).join('');
@@ -961,19 +965,18 @@
         function showDetail(itemId) {
             const item = cmsData.items.find(i => i.id === itemId);
             if (item) {
-                const short = item.short;
-                
-                // Gallery - detect how many images exist (max 4)
+                // Gallery - use item.image field, detect other images by short
                 const images = [];
-                if (short) {
-                    for (let i = 0; i <= 4; i++) {
-                        const suffix = i === 0 ? '00.jpeg' : '0' + i + '.jpeg';
-                        images.push('assets/' + short + '-' + suffix);
+                if (item.image) {
+                    images.push('assets/' + item.image);
+                    // Try to detect additional images
+                    const short = item.short || item.image.replace('-00.jpeg', '');
+                    for (let i = 1; i <= 4; i++) {
+                        images.push('assets/' + short + '-0' + i + '.jpeg');
                     }
                 }
                 
-                // Placeholder if no image
-                const hasImage = short && images[0];
+                const hasImage = item.image;
                 const placeholderSvg = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'><rect fill='%230057B8' width='16' height='4.5'/><rect fill='%23FFD700' y='4.5' width='16' height='4.5'/></svg>`;
                 
                 const title = item.title?.[currentLang] || item.title?.en || item.title?.ua || '';

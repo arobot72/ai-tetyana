@@ -1,0 +1,191 @@
+{
+  "_comment": "Путь к файлу: ./.opencode/settings.json",
+  "skills": [
+    {
+      "name": "research-topic",
+      "path": "./.opencode/skills/research-topic/SKILL.md",
+      "enabled": true,
+      "description": "Быстрое структурированное исследование по теме"
+    },
+    {
+      "name": "research-deep",
+      "path": "./.opencode/skills/research-deep/SKILL.md",
+      "enabled": true,
+      "description": "Глубокое исследование с анализом источников и обоснованными выводами"
+    },
+    {
+      "name": "spec-writer",
+      "path": "./.opencode/skills/spec-writer/SKILL.md",
+      "enabled": true,
+      "description": "Написание ТЗ на разработку программного обеспечения"
+    },
+    {
+      "name": "spec-update",
+      "path": "./.opencode/skills/spec-update/SKILL.md",
+      "enabled": true,
+      "description": "Обновление ТЗ при добавлении новых функций или изменении требований"
+    },
+    {
+      "name": "scrum-workflow",
+      "path": "./.opencode/skills/scrum-workflow/SKILL.md",
+      "enabled": true,
+      "description": "Управление разработкой по Scrum: бэклог, итерации, приёмка"
+    },
+    {
+      "name": "coding-vibe",
+      "path": "./.opencode/skills/coding-vibe/SKILL.md",
+      "enabled": true,
+      "description": "Быстрое написание кода по описанию на естественном языке"
+    },
+    {
+      "name": "coding-review",
+      "path": "./.opencode/skills/coding-review/SKILL.md",
+      "enabled": true,
+      "description": "Поиск багов, уязвимостей и улучшений в коде"
+    },
+    {
+      "name": "coding-refactor",
+      "path": "./.opencode/skills/coding-refactor/SKILL.md",
+      "enabled": true,
+      "description": "Рефакторинг: улучшение структуры без изменения поведения"
+    },
+    {
+      "name": "test-unit",
+      "path": "./.opencode/skills/test-unit/SKILL.md",
+      "enabled": true,
+      "description": "Юнит-тесты: pytest, vitest"
+    },
+    {
+      "name": "test-api",
+      "path": "./.opencode/skills/test-api/SKILL.md",
+      "enabled": true,
+      "description": "Тесты для REST API эндпоинтов"
+    },
+    {
+      "name": "test-ui",
+      "path": "./.opencode/skills/test-ui/SKILL.md",
+      "enabled": true,
+      "description": "UI и e2e тесты: Playwright, Testing Library"
+    },
+    {
+      "name": "devops-quick",
+      "path": "./.opencode/skills/devops-quick/SKILL.md",
+      "enabled": true,
+      "description": "Docker, GitHub Actions, CI/CD, деплой"
+    },
+    {
+      "name": "youtube-video",
+      "path": "./.opencode/skills/youtube-video/SKILL.md",
+      "enabled": true,
+      "description": "Глубокий анализ одного YouTube-ролика"
+    },
+    {
+      "name": "youtube-channel",
+      "path": "./.opencode/skills/youtube-channel/SKILL.md",
+      "enabled": true,
+      "description": "Мониторинг каналов, конкурентный анализ, gap-анализ ниши"
+    },
+    {
+      "name": "youtube-trends",
+      "path": "./.opencode/skills/youtube-trends/SKILL.md",
+      "enabled": true,
+      "description": "Выявление трендов и незанятых ниш на YouTube"
+    },
+    {
+      "name": "knowledge-capture",
+      "path": "./.opencode/skills/knowledge-capture/SKILL.md",
+      "enabled": true,
+      "description": "Захват и структурирование знаний из роликов в Obsidian"
+    },
+    {
+      "name": "oc-rules",
+      "path": "./.opencode/skills/oc-rules/SKILL.md",
+      "enabled": true,
+      "description": "Правила системы управления агентами: законы, алгоритм Orchestrator, термины"
+    },
+    {
+      "name": "project-standards",
+      "path": "./.opencode/skills/project-standards/SKILL.md",
+      "enabled": true,
+      "description": "Стандарты любого проекта: что обязательно, как тестировать запуск, Playwright для веба"
+    }
+  ],
+  "workflows": {
+    "planning": {
+      "description": "Планирование проекта с нуля",
+      "steps": [
+        "research-deep",
+        "spec-writer",
+        "scrum-workflow"
+      ]
+    },
+    "development": {
+      "description": "Разработка задач итерации",
+      "steps": [
+        "coding-vibe",
+        "coding-review",
+        "test-unit",
+        "test-api",
+        "test-ui",
+        "coding-refactor",
+        "devops-quick"
+      ]
+    },
+    "feature": {
+      "description": "Добавление новой функции в существующий проект",
+      "steps": [
+        "spec-update",
+        "scrum-workflow",
+        "coding-vibe",
+        "test-unit",
+        "test-ui"
+      ]
+    },
+    "full-cycle": {
+      "description": "Полный цикл: от идеи до деплоя",
+      "steps": [
+        "research-deep",
+        "spec-writer",
+        "scrum-workflow",
+        "coding-vibe",
+        "coding-review",
+        "test-unit",
+        "test-api",
+        "test-ui",
+        "coding-refactor",
+        "devops-quick"
+      ]
+    },
+    "oc-build": {
+      "description": "Реализация задачи через систему управления агентами (Orchestrator)",
+      "steps": [
+        "oc-rules",
+        "project-standards"
+      ]
+    },
+    "youtube-video": {
+      "description": "Анализ одного ролика и сохранение знаний",
+      "steps": [
+        "youtube-video",
+        "knowledge-capture"
+      ]
+    },
+    "youtube-research": {
+      "description": "Полное исследование ниши на YouTube",
+      "steps": [
+        "youtube-channel",
+        "youtube-video",
+        "knowledge-capture",
+        "youtube-trends"
+      ]
+    }
+  },
+  "defaults": {
+    "language": "ru",
+    "autoRunTests": false,
+    "preferSingleFile": true,
+    "verboseOutput": false,
+    "sprintSize": 3,
+    "defaultTestFramework": "pytest"
+  }
+}
