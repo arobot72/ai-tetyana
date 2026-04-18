@@ -110,7 +110,7 @@
         
         /* Footer */
         .footer { background: #1a1a2e; color: white; padding: 60px 0 20px; }
-        .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
         .footer-title { font-size: 18px; font-weight: 600; margin-bottom: 20px; }
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 10px; }
@@ -187,7 +187,7 @@
             .hero-slide-title { font-size: 28px; }
             .hero-slide-desc { font-size: 16px; }
             .about-grid { grid-template-columns: 1fr; }
-            .footer-inner { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
@@ -238,6 +238,10 @@
             <div>
                 <h4 class="footer-title" data-i18n="footer.services">Послуги</h4>
                 <ul class="footer-links" id="footer-services"></ul>
+            </div>
+            <div>
+                <h4 class="footer-title" data-i18n="footer.contacts">Контакти</h4>
+                <ul class="footer-links" id="footer-contacts"></ul>
             </div>
             <div>
                 <h4 class="footer-title">Соцмережі</h4>
@@ -561,24 +565,34 @@
 
         // ==================== INIT ====================
         async function init() {
-            // Всегда загружаем из data.json (или localStorage если есть)
+            // Очищаем localStorage при каждом запуске - чтобы виделись изменения в data.json
+            // localStorage.removeItem('cmsData'); // Раскомментируй если нужно принудительно
+            
+            // ВСЕГДА сначала пробуем data.json
             try {
-                const savedData = localStorage.getItem('cmsData');
-                if (savedData) {
-                    cmsData = JSON.parse(savedData);
-                    console.log('Загружено из localStorage');
+                const response = await fetch('data.json');
+                if (response.ok) {
+                    cmsData = await response.json();
+                    console.log('Загружено из data.json');
                 } else {
-                    const response = await fetch('data.json');
-                    if (response.ok) {
-                        cmsData = await response.json();
-                        console.log('Загружено из data.json');
-                    } else {
-                        throw new Error('data.json not found');
-                    }
+                    throw new Error('data.json not found');
                 }
             } catch (e) {
-                console.log('Ошибка загрузки, используем fallback:', e.message);
-                cmsData = getHardcodedData();
+                console.log('Ошибка загрузки из data.json:', e.message);
+                // Fallback ТОЛЬКО если data.json не работает
+                try {
+                    const savedData = localStorage.getItem('cmsData');
+                    if (savedData) {
+                        cmsData = JSON.parse(savedData);
+                        console.log('Загружено из localStorage fallback');
+                    } else {
+                        cmsData = getHardcodedData();
+                        console.log('Используем hardcoded fallback');
+                    }
+                } catch (e2) {
+                    cmsData = getHardcodedData();
+                    console.log('Используем hardcoded fallback (крайний случай)');
+                }
             }
             
             window.cmsData = cmsData;
@@ -605,17 +619,22 @@
                     {"id":10,"short":"review2","title":{"en":"Марія - Freelance Designer","ua":"Марія - Freelance Designer","ru":"Мария - Freelance Designer"},"description":{"en":"Тетяна дуже терпляча і уважна до кожного учня. Завжди пояснює незрозумілі речі по-різному, поки не зрозумієш.","ua":"Тетяна дуже терпляча і уважна до кожного учня. Завжди пояснює незрозумілі речі по-різному, поки не зрозумієш.","ru":"Татьяна очень терпеливая и внимательная к каждому ученику. Всегда объясняет непонятные вещи по-разному, пока не поймёшь."},"details":{"en":"","ua":"","ru":""},"price":0,"price_type":"course","tags":["reviews"],"rating":8.0,"detailed":true,"show":true,"image":"","icon":"⭐⭐⭐⭐☆"},
                     {"id":11,"short":"review3","title":{"en":"Іван - IT Developer","ua":"Іван - IT Developer","ru":"Иван - IT Developer"},"description":{"en":"Відмінний курс для вивчення української з нуля! Матеріал структурований, домашні завдання допомагають закріпити знання. За 3 місяці склав НМТ на 190 балів!","ua":"Відмінний курс для вивчення української з нуля! Матеріал структурований, домашні завдання допомагають закріпити знання. За 3 місяці склав НМТ на 190 балів!","ru":"Отличный курс для изучения украинского с нуля! Материал структурирован, домашние задания помогают закрепить знания. За 3 месяца сдал НМТ на 190 баллов!"},"details":{"en":"","ua":"","ru":""},"price":0,"price_type":"course","tags":["reviews"],"rating":9.0,"detailed":true,"show":true,"image":"","icon":"⭐⭐⭐⭐⭐"},
                     {"id":12,"short":"review4","title":{"en":"Анна - Marketing Manager","ua":"Анна - Marketing Manager","ru":"Анна - Marketing Manager"},"description":{"en":"Записувала чоловіка на курс для роботи в українських компаніях. Результат перевершив очікування - він тепер спілкується українською навіть вдома!","ua":"Записувала чоловіка на курс для роботи в українських компаніях. Результат перевершив очікування - він тепер спілкується українською навіть вдома!","ru":"Записывала мужа на курс для работы в украинских компаниях. Результат превзошёл ожидания - он теперь общается на украинском даже дома!"},"details":{"en":"","ua":"","ru":""},"price":0,"price_type":"course","tags":["reviews"],"rating":7.0,"detailed":true,"show":true,"image":"","icon":"⭐⭐⭐☆☆"},
-                    {"id":13,"short":"review5","title":{"en":"Петро - Пенсіонер","ua":"Петро - Пенсіонер","ru":"Пётр - Пенсионер"},"description":{"en":"Навчив онуку української мови за 6 місяців. Тепер він допомагає мені з документами і я можу спілкуватися з лікарями самостійно. Дякую!","ua":"Навчив онуку української мови за 6 місяців. Тепер він допомагає мені з документами і я можу спілкуватися з лікарями самостійно. Дякую!","ru":"Научил внука украинскому за 6 месяцев. Теперь он помогает мне с документами и я могу общаться с врачами самостоятельно. Спасибо!"},"details":{"en":"","ua":"","ru":""},"price":0,"price_type":"course","tags":["reviews"],"rating":8.0,"detailed":true,"show":true,"image":"","icon":"⭐⭐⭐⭐☆"}
+                    {"id":13,"short":"review5","title":{"en":"Петро - Пенсіонер","ua":"Петро - Пенсіонер","ru":"Пётр - Пенсионер"},"description":{"en":"Навчив онуку української мови за 6 місяців. Тепер він допомагає мені з документами і я можу спілкуватися з лікарями самостійно. Дякую!","ua":"Навчив онуку української мови за 6 місяців. Тепер він допомагає мені з документами і я можу спілкуватися з лікарями самостійно. Дякую!","ru":"Научил внука украинскому за 6 месяцев. Теперь он помогает мне с документами и я могу общаться с врачами самостоятельно. Спасибо!"},"details":{"en":"","ua":"","ru":""},"price":0,"price_type":"course","tags":["reviews"],"rating":8.0,"detailed":true,"show":true,"image":"","icon":"⭐⭐⭐⭐☆"},
+                    {"id":100,"short":"phone","title":{"en":"Phone","ua":"Телефон","ru":"Телефон"},"description":{"en":"+380663692317","ua":"+380663692317","ru":"+380663692317"},"details":{"en":"","ua":"","ru":""},"price":0,"price_type":"course","tags":["contacts"],"rating":0,"detailed":false,"show":true,"show_in_hero":false,"image":"","icon":"📞"},
+                    {"id":101,"short":"telegram","title":{"en":"Telegram","ua":"Telegram","ru":"Telegram"},"description":{"en":"@tetyana","ua":"@tetyana","ru":"@tetyana"},"details":{"en":"","ua":"","ru":""},"price":0,"price_type":"course","tags":["contacts"],"rating":0,"detailed":false,"show":true,"show_in_hero":false,"image":"","icon":"✈️"},
+                    {"id":102,"short":"instagram","title":{"en":"Instagram","ua":"Instagram","ru":"Instagram"},"description":{"en":"@tetyana","ua":"@tetyana","ru":"@tetyana"},"details":{"en":"","ua":"","ru":""},"price":0,"price_type":"course","tags":["contacts"],"rating":0,"detailed":false,"show":true,"show_in_hero":false,"image":"","icon":"📸"}
                 ],
                 "sections": [
                     {"id":1,"short":"courses","title":{"en":"Courses","ua":"Курси","ru":"Курсы"},"description":{"en":"Learn Ukrainian with our courses","ua":"Вивчай українську на наших курсах","ru":"Изучай украинский на наших курсах"},"tags":["courses"],"section_type":"courses","template":"cards","show":true,"hero":true,"order":1,"image":"courses-00.jpg","icon":"courses-88.svg"},
                     {"id":2,"short":"services","title":{"en":"Services","ua":"Послуги","ru":"Услуги"},"description":{"en":"Professional tutoring services","ua":"Професійні послуги репетитора","ru":"Профессиональные услуги репетитора"},"tags":["services"],"section_type":"services","template":"cards","show":true,"hero":false,"order":2,"image":"services-00.jpg","icon":"services-88.svg"},
-                    {"id":3,"short":"reviews","title":{"en":"Reviews","ua":"Відгуки","ru":"Отзывы"},"description":{"en":"What our students say about us","ua":"Що говорять наші студенти про нас","ru":"Что говорят наши студенты о нас"},"tags":["reviews"],"section_type":"reviews","template":"carousel","show":true,"hero":false,"order":3,"image":"","icon":"reviews-88.svg"}
+                    {"id":3,"short":"contacts","title":{"en":"Contacts","ua":"Контакти","ru":"Контакты"},"description":{"en":"My contact information","ua":"Моя контактна інформація","ru":"Моя контактная информация"},"tags":["contacts"],"section_type":"contacts","template":"list-left","show":true,"hero":false,"order":3,"image":"","icon":"📱"},
+                    {"id":4,"short":"reviews","title":{"en":"Reviews","ua":"Відгуки","ru":"Отзывы"},"description":{"en":"What our students say about us","ua":"Що говорять наші студенти про нас","ru":"Что говорят наши студенты о нас"},"tags":["reviews"],"section_type":"reviews","template":"carousel","show":true,"hero":false,"order":4,"image":"","icon":"reviews-88.svg"}
                 ],
                 "tags": [
                     {"id":1,"name":"courses","description":"Курсы"},
                     {"id":2,"name":"services","description":"Услуги"},
-                    {"id":3,"name":"reviews","description":"Отзывы"}
+                    {"id":3,"name":"contacts","description":"Контакты"},
+                    {"id":4,"name":"reviews","description":"Отзывы"}
                 ],
                 "contacts": {"phone":"+38 (050) 123-45-67","email":"tetyana@example.com","footer_desc":{"en":"Ukrainian language tutor","ua":"Репетитор української мови","ru":"Репетитор украинского языка"},"social":{"youtube":"","instagram":"","facebook":"","tiktok":""}}
             };
@@ -705,17 +724,25 @@
                 const sectionTitle = section.title[currentLang] || section.title.ua;
                 const sectionDesc = section.description[currentLang] || section.description.ua;
                 
+                // Пропускаем элементы которые не являются настоящими разделами (id > 90 это элементы)
+                if (section.id > 90) return;
+                
                 if (section.section_type === 'about') {
                     html += renderAboutSection(sectionTitle, sectionDesc);
                 } else if (section.section_type === 'contacts') {
-                    html += renderContactsSection(sectionTitle);
+                    // Контакты - только через renderContactsSection, НЕ через общий цикл
+                    const contacts = cmsData.items.filter(i => i.show && i.tags?.includes('contacts'));
+                    if (contacts.length > 0) {
+                        html += renderContactsSection(sectionTitle, section.template);
+                    }
                 } else if (section.section_type === 'reviews') {
                     const reviews = cmsData.items.filter(i => i.show && i.tags.some(tag => section.tags.includes(tag)));
                     html += renderReviewsSection(sectionTitle, reviews);
                 } else {
                     // Regular sections: services, courses, custom
+                    // НЕ показываем контакты в обычных секциях
                     const items = cmsData.items
-                        .filter(i => i.show && i.tags.some(tag => section.tags.includes(tag)))
+                        .filter(i => i.show && i.tags && i.tags.some(tag => section.tags.includes(tag)) && !i.tags.includes('contacts'))
                         .sort((a, b) => b.rating - a.rating);
                     
                     if (items.length > 0) {
@@ -880,7 +907,43 @@
             `;
         }
 
-        function renderContactsSection(title) {
+        function renderContactsSection(title, template) {
+            // Получаем товары с тегом contacts
+            const contacts = cmsData.items.filter(i => i.show && i.tags?.includes('contacts'));
+            
+            if (template === 'list-left') {
+                // Список слева - иконка + название + клик для деталей
+                return `
+                    <section class="section" id="contacts">
+                        <div class="container">
+                            <h2 class="section-title">${title}</h2>
+                            <div style="display:flex;flex-direction:column;gap:15px;max-width:400px;margin:0 auto;">
+                                ${contacts.map(i => {
+                                    const contactTitle = i.title?.[currentLang] || i.title?.en || '';
+                                    const contactDesc = i.description?.[currentLang] || i.description?.en || '';
+                                    // Если detailed - добавляем клик
+                                    const clickHandler = i.detailed ? `onclick="showDetail(${i.id})"` : '';
+                                    const cursor = i.detailed ? 'cursor:pointer;' : '';
+                                    // Используем getIconUrl как для карточек - единая логика
+                                    const iconSrc = getIconUrl(i.icon, i.short);
+                                    const iconHtml = iconSrc && iconSrc.endsWith('.svg')
+                                        ? `<img src="${iconSrc}" style="width:24px;height:24px;" alt="${contactTitle}">`
+                                        : `<span style="font-size:24px;">${i.icon || '📱'}</span>`;
+                                    return `<div style="display:flex;align-items:center;gap:12px;padding:10px;background:#f5f5f5;border-radius:8px;${cursor}" ${clickHandler}>
+                                        ${iconHtml}
+                                        <div>
+                                            <div style="font-weight:600;">${contactTitle}</div>
+                                            <div style="color:#666;font-size:14px;">${contactDesc}</div>
+                                        </div>
+                                    </div>`;
+                                }).join('')}
+                            </div>
+                        </div>
+                    </section>
+                `;
+            }
+            
+            // Старый формат (если не list-left)
             return `
                 <section class="section" id="contacts">
                     <div class="container">
@@ -914,23 +977,57 @@
         }
 
 function renderFooter() {
+            // Единая функция для иконки в подвале
+            const getFooterIcon = (item) => {
+                const iconSrc = getIconUrl(item.icon, item.short);
+                if (iconSrc && iconSrc.endsWith('.svg')) {
+                    return `<img src="${iconSrc}" style="width:20px;height:20px;">`;
+                }
+                return item.icon ? `<span style="font-size:16px;">${item.icon}</span>` : '';
+            };
+            
             // Курсы - из раздела courses (tag: courses)
             const courses = cmsData.items.filter(i => i.show && i.tags?.includes('courses')).slice(0, 5);
             document.getElementById('footer-courses').innerHTML = courses.map(i => {
                 const title = i.title?.[currentLang] || i.title?.en || i.title?.ua || i.short || 'Курс';
-                return `<li style="margin-bottom:8px;">
-                    <a href="#" onclick="showDetail(${i.id});return false" style="text-decoration:none;color:#fff;">${title}</a>
+                const iconHtml = getFooterIcon(i);
+                const linkHtml = i.detailed 
+                    ? `<a href="javascript:showDetail(${i.id})" style="text-decoration:none;color:#fff;">${title}</a>`
+                    : `<span style="color:#fff;">${title}</span>`;
+                return `<li style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                    ${iconHtml}
+                    ${linkHtml}
                 </li>`;
             }).join('');
             
-            // Послуги - из раздела services (tag: services)
+// Послуги - из раздела services (tag: services)
             const services = cmsData.items.filter(i => i.show && i.tags?.includes('services')).slice(0, 5);
             document.getElementById('footer-services').innerHTML = services.map(i => {
                 const title = i.title?.[currentLang] || i.title?.en || i.title?.ua || i.short || 'Послуга';
-                return `<li style="margin-bottom:8px;">
-                    <a href="#" onclick="showDetail(${i.id});return false" style="text-decoration:none;color:#fff;">${title}</a>
+                const iconHtml = getFooterIcon(i);
+                const linkHtml = i.detailed 
+                    ? `<a href="javascript:showDetail(${i.id})" style="text-decoration:none;color:#fff;">${title}</a>`
+                    : `<span style="color:#fff;">${title}</span>`;
+                return `<li style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                    ${iconHtml}
+                    ${linkHtml}
                 </li>`;
-}).join('');
+            }).join('');
+            
+// Контакты - из раздела contacts (tag: contacts)
+            const contacts = cmsData.items.filter(i => i.show && i.tags?.includes('contacts')).slice(0, 5);
+            document.getElementById('footer-contacts').innerHTML = contacts.map(i => {
+                const title = i.title?.[currentLang] || i.title?.en || i.title?.ua || i.short || 'Контакт';
+                const iconHtml = getFooterIcon(i);
+                const isClickable = i.detailed;
+                const linkHtml = isClickable 
+                    ? `<a href="javascript:showDetail(${i.id})" style="text-decoration:none;color:#fff;">${title}</a>`
+                    : `<span style="color:#fff;">${title}</span>`;
+                return `<li style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                    ${iconHtml}
+                    ${linkHtml}
+                </li>`;
+            }).join('');
              
             document.getElementById('footer-desc').textContent = cmsData.contacts.footer_desc[currentLang] || cmsData.contacts.footer_desc.ua;
         }

@@ -111,7 +111,7 @@
       "tags": [
         "services"
       ],
-      "rating": 9.0,
+      "rating": 9,
       "detailed": true,
       "show": true,
       "image": "exam-00.jpeg",
@@ -228,12 +228,102 @@
       "tags": [
         "services"
       ],
-      "rating": 9.0,
+      "rating": 9,
       "detailed": true,
       "show_in_hero": true,
       "show": true,
       "image": "mentor-00.jpeg",
       "icon": "mentor-88.svg"
+    },
+    {
+      "id": 100,
+      "short": "phone",
+      "title": {
+        "en": "Phone",
+        "ua": "Телефон",
+        "ru": "Телефон"
+      },
+      "description": {
+        "en": "+380663692317",
+        "ua": "+380663692317",
+        "ru": "+380663692317"
+      },
+      "details": {
+        "en": "",
+        "ua": "",
+        "ru": ""
+      },
+      "price": 0,
+      "price_type": "course",
+      "tags": [
+        "contacts"
+      ],
+      "rating": 0,
+      "detailed": false,
+      "show": true,
+      "show_in_hero": false,
+      "image": "",
+      "icon": "phone-88.svg"
+    },
+    {
+      "id": 101,
+      "short": "telegram",
+      "title": {
+        "en": "Telegram",
+        "ua": "Telegram",
+        "ru": "Telegram"
+      },
+      "description": {
+        "en": "@tetyana",
+        "ua": "@tetyana",
+        "ru": "@tetyana"
+      },
+      "details": {
+        "en": "",
+        "ua": "",
+        "ru": ""
+      },
+      "price": 0,
+      "price_type": "course",
+      "tags": [
+        "contacts"
+      ],
+      "rating": 0,
+      "detailed": false,
+      "show": true,
+      "show_in_hero": false,
+      "image": "",
+      "icon": "telegram-88.svg"
+    },
+    {
+      "id": 102,
+      "short": "instagram",
+      "title": {
+        "en": "Instagram",
+        "ua": "Instagram",
+        "ru": "Instagram"
+      },
+      "description": {
+        "en": "@tetyana",
+        "ua": "@tetyana",
+        "ru": "@tetyana"
+      },
+      "details": {
+        "en": "",
+        "ua": "",
+        "ru": ""
+      },
+      "price": 0,
+      "price_type": "course",
+      "tags": [
+        "contacts"
+      ],
+      "rating": 0,
+      "detailed": false,
+      "show": true,
+      "show_in_hero": false,
+      "image": "",
+      "icon": "instagram-88.svg"
     }
   ],
   "sections": [
@@ -284,6 +374,30 @@
       "order": 2,
       "image": "services-00.jpg",
       "icon": "services-88.svg"
+    },
+    {
+      "id": 3,
+      "short": "contacts",
+      "title": {
+        "en": "Contacts",
+        "ua": "Контакти",
+        "ru": "Контакты"
+      },
+      "description": {
+        "en": "My contact information",
+        "ua": "Моя контактна інформація",
+        "ru": "Моя контактная информация"
+      },
+      "tags": [
+        "contacts"
+      ],
+      "section_type": "contacts",
+      "template": "list-left",
+      "show": true,
+      "hero": false,
+      "order": 3,
+      "image": "",
+      "icon": "📱"
     }
   ],
   "tags": [
@@ -296,6 +410,11 @@
       "id": 2,
       "name": "services",
       "description": "Услуги"
+    },
+    {
+      "id": 3,
+      "name": "contacts",
+      "description": "Контакты"
     }
   ],
   "contacts": {
